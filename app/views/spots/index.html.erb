@@ -23,7 +23,7 @@
 </div>
 
 <% @spots.each do |spot| %>
-  <%= link_to () do %>
+  <%= link_to spot_path(spot) do %>
   <div class="mb-8 mt-4">
     <%= render "card_spot", spot: spot %>
   <% end %>
