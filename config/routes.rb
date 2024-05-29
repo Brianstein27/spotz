@@ -4,5 +4,6 @@ Rails.application.routes.draw do
 
   resources :spots, only: %i[index show] do
     resources :bookmarks, only: %i[index new create destroy]
+    resources :visits, only: %i[new create]
   end
 end
