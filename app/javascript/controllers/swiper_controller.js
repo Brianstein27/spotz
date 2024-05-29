@@ -3,6 +3,8 @@ import { Controller } from "@hotwired/stimulus";
 // Connects to data-controller="swiper"
 export default class extends Controller {
   connect() {
+    console.log("Swiper connected")
+
     const swiper = new Swiper(".swiper", {
       // Optional parameters
       direction: "horizontal",

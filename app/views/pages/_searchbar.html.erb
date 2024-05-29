@@ -1,5 +1,5 @@
 <div
-  data-controller="show"
+  data-controller="searchbar"
   class="my-10 rounded-full border border-gray-300 px-6 py-3"
 ><div class="flex items-center justify-between"><div class="flex grow-0 items-center"><svg
         xmlns="http://www.w3.org/2000/svg"
@@ -14,11 +14,11 @@
         />
       </svg>
       <div
-        data-show-target="text"
-        data-action="click->show#show"
+        data-searchbar-target="text"
+        data-action="click->searchbar#show"
         class="ml-4 h-10 grow flex-col"
       ><div class="font-semibold leading-5">Find spotz</div><div class="text-description font-light leading-4">Explore like a local</div></div></div><div class="flex items-center">
-      <div data-show-target="input" class="hidden grow">
+      <div data-searchbar-target="input" class="hidden grow">
         <%= form_with url: (), method: :get, class: "h-10 search-bar flex items-center" do %>
           <%= text_field_tag :address,
           params[:address],
