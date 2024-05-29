@@ -3,6 +3,7 @@ class Spot < ApplicationRecord
   has_many :experiences, through: :links
   has_many :bookmarks
   has_many :visits
+  has_many_attached :photos
 
   validates :name, presence: true, uniqueness: true
   validates :address, presence: true
