@@ -22,11 +22,10 @@
 </div>
 </div>
 
-<% 10.times do |spot| %>
-  <% image = "https://images.unsplash.com/photo-1603787935137-58167f55336f?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" %>
+<% @spots.each do |spot| %>
   <%= link_to () do %>
   <div class="mb-8 mt-4">
-    <%= render "card_spot", image: image %>
+    <%= render "card_spot", spot: spot %>
   <% end %>
   </div>
 <% end %>

@@ -5,9 +5,9 @@
   "
 >
   <div class="ml-4 flex">
-    <% 10.times do |spot| %>
-      <%= link_to () do %>
-        <%= render "card_spot_home" %>
+    <% spots[1..10].each do |spot| %>
+      <%= link_to spot_path(spot) do %>
+        <%= render "card_spot_home", spot: spot %>
       <% end %>
     <% end %>
   </div>
