@@ -9,8 +9,8 @@
 #   end
 
 # db/seeds.rb
-Users.destroy_all
-Spots.destroy_all
+User.destroy_all
+Spot.destroy_all
 
 spots = [
   { name: "Brandenburger Tor", address: "Pariser Platz, 10117 Berlin", category: "Culture", subtitle: "Iconic City Gate", description: "A neoclassical monument and one of the best-known landmarks of Germany." },
