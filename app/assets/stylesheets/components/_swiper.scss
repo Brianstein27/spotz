@@ -1,0 +1,26 @@
+.swiper {
+  margin-left: -16px !important;
+  margin-right: -16px !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: white !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  height: 28px !important;
+  aspect-ratio: 1/1 !important;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  content: "" !important;
+}
+
+.my-transparency-gradient {
+  mask-image: linear-gradient(#000, rgba(0, 0, 0, 0));
+  -webkit-mask-image: linear-gradient(#000,
+      rgba(0, 0, 0, 1) 70%,
+      rgba(0, 0, 0, 0) 100%);
+}
