@@ -9,8 +9,8 @@
 #   end
 
 # db/seeds.rb
-Users.destroy_all
-Spots.destroy_all
+User.destroy_all
+Spot.destroy_all
 
 spots = [
   { name: "Brandenburger Tor", address: "Pariser Platz, 10117 Berlin", category: "Culture", subtitle: "Iconic City Gate", description: "A neoclassical monument and one of the best-known landmarks of Germany." },
@@ -29,7 +29,7 @@ spots = [
   { name: "Hackescher Markt", address: "Hackescher Markt, 10178 Berlin", category: "Hangout", subtitle: "Shopping and Dining Area", description: "A lively area known for its nightlife, restaurants, and shopping." },
   { name: "Berlin Wall Memorial", address: "Bernauer Str. 111, 13355 Berlin", category: "Culture", subtitle: "Memorial Site", description: "A monument to the divided city and the victims of communist tyranny." },
   { name: "Victory Column", address: "Großer Stern, 10557 Berlin", category: "Culture", subtitle: "Triumphal Column", description: "A major tourist attraction in Berlin, offering great views from the top." },
-  { name: "Treptower Park", address: "Alt-Treptow, 12435 Berlin", category: "Park", subtitle: "Hangout Park", description: "A large public park alongside the river Spree." },
+  { name: "Treptower Park", address: "Alt-Treptow, 12435 Berlin", category: "Nature", subtitle: "Hangout Park", description: "A large public park alongside the river Spree." },
   { name: "Kurfürstendamm", address: "Kurfürstendamm, 10719 Berlin", category: "Hangout", subtitle: "Shopping Boulevard", description: "One of the most famous avenues in Berlin, known for its shopping and nightlife." },
   { name: "Tempelhofer Feld", address: "Tempelhofer Damm, 12101 Berlin", category: "Nature", subtitle: "Public Park", description: "A large park created from the former Tempelhof Airport, used for various recreational activities." },
   { name: "Berlin Philharmonie", address: "Herbert-von-Karajan-Straße 1, 10785 Berlin", category: "Culture", subtitle: "Concert Hall", description: "A renowned concert hall home to the Berlin Philharmonic Orchestra." },
@@ -38,16 +38,16 @@ spots = [
   { name: "Kater Blau", address: "Holzmarktstraße 25, 10243 Berlin", category: "Nightlife", subtitle: "Nightclub", description: "A renowned club known for its eclectic music and unique atmosphere." },
   { name: "Clärchens Ballhaus", address: "Auguststraße 24, 10117 Berlin", category: "Nightlife", subtitle: "Dance Hall and Restaurant", description: "A historic dance hall and restaurant offering a variety of music and dancing styles." },
   { name: "Tresor", address: "Köpenicker Str. 70, 10179 Berlin", category: "Nightlife", subtitle: "Techno Club", description: "A legendary techno club located in a former power plant." },
-  { name: "Prater Garten", address: "Kastanienallee 7-9, 10435 Berlin", category: "Food 'n Drinks", subtitle: "Beer Garden", description: "The oldest beer garden in Berlin, offering a variety of beers and traditional German food." },
-  { name: "Cookies Cream", address: "Behrenstraße 55, 10117 Berlin", category: "Food 'n Drinks", subtitle: "Vegetarian Restaurant", description: "An upscale vegetarian restaurant with a creative menu." },
-  { name: "Zur Letzten Instanz", address: "Waisenstraße 14-16, 10179 Berlin", category: "Food 'n Drinks", subtitle: "Historic Restaurant", description: "Berlin's oldest restaurant, serving traditional German cuisine." },
-  { name: "Bar Tausend", address: "Schiffbauerdamm 11, 10117 Berlin", category: "Food 'n Drinks", subtitle: "Cocktail Bar", description: "A stylish bar known for its innovative cocktails and unique atmosphere." },
-  { name: "The Barn", address: "Auguststraße 58, 10119 Berlin", category: "Food 'n Drinks", subtitle: "Coffee Shop", description: "A famous coffee shop known for its high-quality coffee and minimalist design." },
-  { name: "Restaurant Tim Raue", address: "Rudi-Dutschke-Straße 26, 10969 Berlin", category: "Food 'n Drinks", subtitle: "Fine Dining", description: "A Michelin-starred restaurant offering Asian-inspired cuisine by Chef Tim Raue." },
-  { name: "Katz Orange", address: "Bergstraße 22, 10115 Berlin", category: "Food 'n Drinks", subtitle: "Modern European", description: "A restaurant known for its cozy atmosphere and modern European dishes." },
-  { name: "Facil", address: "Potsdamer Straße 3, 10785 Berlin", category: "Food 'n Drinks", subtitle: "Gourmet Restaurant", description: "A Michelin-starred restaurant offering innovative, high-end cuisine." },
-  { name: "Grill Royal", address: "Friedrichstraße 105b, 10117 Berlin", category: "Food 'n Drinks", subtitle: "Steakhouse", description: "A chic steakhouse known for its high-quality meats and celebrity clientele." },
-  { name: "Nobelhart & Schmutzig", address: "Friedrichstraße 218, 10969 Berlin", category: "Food 'n Drinks", subtitle: "Contemporary German", description: "A restaurant focusing on locally sourced ingredients and contemporary German cuisine." },
+  { name: "Prater Garten", address: "Kastanienallee 7-9, 10435 Berlin", category: "Food'n'Drinks", subtitle: "Beer Garden", description: "The oldest beer garden in Berlin, offering a variety of beers and traditional German food." },
+  { name: "Cookies Cream", address: "Behrenstraße 55, 10117 Berlin", category: "Food'n'Drinks", subtitle: "Vegetarian Restaurant", description: "An upscale vegetarian restaurant with a creative menu." },
+  { name: "Zur Letzten Instanz", address: "Waisenstraße 14-16, 10179 Berlin", category: "Food'n'Drinks", subtitle: "Historic Restaurant", description: "Berlin's oldest restaurant, serving traditional German cuisine." },
+  { name: "Bar Tausend", address: "Schiffbauerdamm 11, 10117 Berlin", category: "Food'n'Drinks", subtitle: "Cocktail Bar", description: "A stylish bar known for its innovative cocktails and unique atmosphere." },
+  { name: "The Barn", address: "Auguststraße 58, 10119 Berlin", category: "Food'n'Drinks", subtitle: "Coffee Shop", description: "A famous coffee shop known for its high-quality coffee and minimalist design." },
+  { name: "Restaurant Tim Raue", address: "Rudi-Dutschke-Straße 26, 10969 Berlin", category: "Food'n'Drinks", subtitle: "Fine Dining", description: "A Michelin-starred restaurant offering Asian-inspired cuisine by Chef Tim Raue." },
+  { name: "Katz Orange", address: "Bergstraße 22, 10115 Berlin", category: "Food'n'Drinks", subtitle: "Modern European", description: "A restaurant known for its cozy atmosphere and modern European dishes." },
+  { name: "Facil", address: "Potsdamer Straße 3, 10785 Berlin", category: "Food'n'Drinks", subtitle: "Gourmet Restaurant", description: "A Michelin-starred restaurant offering innovative, high-end cuisine." },
+  { name: "Grill Royal", address: "Friedrichstraße 105b, 10117 Berlin", category: "Food'n'Drinks", subtitle: "Steakhouse", description: "A chic steakhouse known for its high-quality meats and celebrity clientele." },
+  { name: "Nobelhart & Schmutzig", address: "Friedrichstraße 218, 10969 Berlin", category: "Food'n'Drinks", subtitle: "Contemporary German", description: "A restaurant focusing on locally sourced ingredients and contemporary German cuisine." },
   { name: "Spielplatz", address: "Marion-Gräfin-Dönhoff-Platz, 10117 Berlin", category: "Playground", subtitle: "Playground in Berlin Mitte", description: "Great playground for kids." }
 ]
 
@@ -57,7 +57,7 @@ end
 
 puts "Created #{Spot.count} locations."
 
-users = { email: "user@user.com", encrypted_password: "123456", username: "user1" }
+users =  [ { email: "user@user.com", password: "123456", username: "user1" } ]
 
 users.each do |user|
   User.create!(user)
