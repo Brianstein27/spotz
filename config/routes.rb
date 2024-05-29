@@ -3,12 +3,11 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :spots, only: %i[index show] do
-    resources :reviews, module: :spots
+    resources :reviews, only: %i[new create index edit update destroy]
+    resources :visits, only: %i[new create]
   end
 
   resources :experiences, only: %i[index show] do
-    resources :reviews, module: :experiences
+    resources :reviews, only: %i[new create index edit update destroy]
   end
-
-  resources :reviews, only: %i[new create index edit update destroy]
 end
