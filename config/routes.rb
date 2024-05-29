@@ -10,5 +10,6 @@ Rails.application.routes.draw do
 
   resources :experiences, only: %i[index show] do
     resources :reviews, only: %i[new create index edit update destroy]
+    resources :links, only: [:index, :create, :show]
   end
 end
