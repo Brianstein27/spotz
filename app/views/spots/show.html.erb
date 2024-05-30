@@ -124,7 +124,7 @@
     </button>
   </div>
   <!-- Metrics -->
-  <div class="flex w-full justify-between border-b border-slate-300 py-4">
+  <div class="flex w-full justify-between border-b border-slate-200 py-4">
     <div class="w-32 flex-col px-4 py-2">
       <div class="text-center font-bold">1.2K</div>
       <div class="text-center">Visits</div>
@@ -139,22 +139,21 @@
     </div>
   </div>
   <!-- Description -->
-  <p class="border-b border-slate-300 py-4 text-slate-700"><%= @spot.description %></p>
+  <p class="border-b border-slate-200 py-4 text-slate-700"><%= @spot.description %></p>
 </div>
 <!-- Map Section -->
-<div style="width: 1000px; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-
-<div class="border-b border-slate-300">
+<div class="border-b border-slate-200 pb-4">
   <div
     class="
-      mb-4 mt-8 flex h-56 w-full flex-col justify-center rounded-xl border
+      mb-4 mt-8 flex h-56 w-full flex-col justify-center rounded-xl border border-b
+      border-slate-200
     "
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
   >
-    <div class="w-full">There will be a map here, I promise!</div>
   </div>
+
   <div class="flex"><svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"

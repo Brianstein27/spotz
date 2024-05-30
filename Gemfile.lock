@@ -334,8 +334,8 @@ DEPENDENCIES
   autoprefixer-rails
   bootsnap
   capybara
-  csv
   cloudinary
+  csv
   debug
   devise
   dotenv-rails
