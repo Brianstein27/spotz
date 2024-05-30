@@ -1,0 +1,92 @@
+<div
+  class="
+    fixed bottom-0 flex h-16 w-full items-center justify-around border-t
+    border-t-teal-100 bg-white
+  "
+>
+  <%= link_to root_path do %>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="<% if current_page?(controller: '/pages', action: 'home') %> 2.5 <% else %> 1.5<% end %>"
+      stroke="currentColor"
+      class="
+        size-6 <% if current_page?(controller: '/pages', action: 'home') %>text-teal-400
+        <%
+        end %>
+      "
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+      />
+    </svg>
+
+  <% end %>
+
+  <%= link_to spots_path do %>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="<% if current_page?(controller: '/spots', action: 'index') %> 2.5 <% else %> 1.5<% end %>"
+      stroke="currentColor"
+      class="
+        size-6
+        <% if current_page?(controller: '/spots', action: 'index') %>text-teal-400<%
+        end %>
+      "
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+      />
+    </svg>
+  <% end %>
+
+  <%= link_to bookmarks_path do %>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="<% if current_page?(controller: '/bookmarks', action: 'index') %> 2.5 <% else %> 1.5<% end %>"
+      stroke="currentColor"
+      class="
+        size-6
+        <% if current_page?(controller: '/bookmarks', action: 'index') %>text-teal-400<%
+        end %>
+      "
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
+      />
+    </svg>
+  <% end %>
+
+  <%= link_to pages_profile_path do %>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="<% if current_page?(controller: '/pages', action: 'profile') %> 2.5 <% else %> 1.5<% end %>"
+      stroke="currentColor"
+      class="
+        size-6
+        <% if current_page?(controller: '/pages', action: 'profile') %>text-teal-400<%
+        end %>
+      "
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+      />
+    </svg>
+  <% end %>
+
+</div>

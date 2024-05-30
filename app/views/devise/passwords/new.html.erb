@@ -1,18 +1,37 @@
-<h2>Forgot your password?</h2>
+<div class=" flex flex-col justify-center py-12 ">
+  <div class="sm:mx-auto sm:w-full sm:max-w-md">
+    <div class="mt-8 flex justify-center">
+      <div class="size-12 rounded-full bg-teal-400 text-teal-400">.</div>
+    </div>
+    <h2 class="mt-6 text-center text-3xl font-extrabold">Forget your password?</h2>
+  </div>
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
+  <div class="my-8">
+    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= f.error_notification %>
+      <div class="px-4">
+        <%= f.input :email,
+                required: false,
                 autofocus: true,
-                input_html: { autocomplete: "email" } %>
+                label: false,
+                error_html: {
+                  class: "text-teal-400",
+                },
+                input_html: {
+                  class:
+                    "border-slate-300 shadow-md pl-4 mb-4 focus:border-none focus:ring-2 focus:ring-teal-400 rounded-xl w-full",
+                  autocomplete: "email",
+                  placeholder: "max@mustermann.de",
+                } %>
+      </div>
+      <div class="form-actions">
+        <%= button_tag(type: 'submit', class: "w-full px-4") do %>
+          <%= render "shared/button_primary", text: "Reset password" %>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="mt-16 flex justify-center text-sm text-gray-400">
+      We'll send you instructions via<span class="ml-1 text-teal-400">email</span>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

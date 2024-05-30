@@ -1,0 +1,197 @@
+<div data-controller="swiper" class="relative">
+  <!-- back button -->
+  <%= link_to :back, class: "absolute top-8 z-50  flex" do %>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      class="size-8 rounded-full bg-slate-50 p-1 shadow-xl"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M14 8a.75.75 0 0 1-.75.75H4.56l3.22 3.22a.75.75 0 1 1-1.06 1.06l-4.5-4.5a.75.75 0 0 1 0-1.06l4.5-4.5a.75.75 0 0 1 1.06 1.06L4.56 7.25h8.69A.75.75 0 0 1 14 8Z"
+        clip-rule="evenodd"
+      />
+    </svg>
+
+  <% end %>
+  <!-- elipsis vertical -->
+  <button class="absolute right-0 top-8 z-50 flex">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      class="size-8 rounded-full bg-slate-50 p-1 shadow-xl"
+    >
+      <path
+        d="M8 2a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM8 6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM9.5 12.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0Z"
+      />
+    </svg>
+  </button>
+  <!-- Slider main container -->
+  <div class="swiper relative -mx-4 -mt-12 h-72">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper w-full ">
+      <!-- Slides -->
+      <% 10.times do %>
+        <div class="swiper-slide w-full bg-gradient-to-b">
+
+          <img
+            class="my-transparency-gradient h-full w-full object-cover"
+            src="https://images.unsplash.com/photo-1603787935137-58167f55336f?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="a random image"
+          >
+        </div>
+      <% end %>
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination pb-4"></div>
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 16 16"
+        fill="white"
+        class="rounded-full"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M9.78 4.22a.75.75 0 0 1 0 1.06L7.06 8l2.72 2.72a.75.75 0 1 1-1.06 1.06L5.47 8.53a.75.75 0 0 1 0-1.06l3.25-3.25a.75.75 0 0 1 1.06 0Z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </div>
+    <div class="swiper-button-next"><svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 16 16"
+        fill="white"
+        class="rounded-full"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M6.22 4.22a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06L8.94 8 6.22 5.28a.75.75 0 0 1 0-1.06Z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </div>
+  </div>
+
+  <div class="flex justify-between">
+    <div>
+      <div class="text-2xl font-bold"><%= @spot.name %></div>
+      <div class="mt-1 flex items-center">
+        4.3
+        <div class="ml-1 flex">
+          <!-- star rating -->
+          <% 5.times do %>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              class="size-3"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M8 1.75a.75.75 0 0 1 .692.462l1.41 3.393 3.664.293a.75.75 0 0 1 .428 1.317l-2.791 2.39.853 3.575a.75.75 0 0 1-1.12.814L7.998 12.08l-3.135 1.915a.75.75 0 0 1-1.12-.814l.852-3.574-2.79-2.39a.75.75 0 0 1 .427-1.318l3.663-.293 1.41-3.393A.75.75 0 0 1 8 1.75Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          <% end %>
+        </div>
+        <!-- amount of reviews -->
+        <div class="ml-1">(412)</div>
+        <div class="ml-1 text-teal-400">
+          • 3.5km away</div>
+      </div>
+    </div>
+    <!-- bookmark -->
+    <button data-controller="bookmark" data-action="bookmark#toggle">
+      <svg
+        data-bookmark-target="icon"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="black"
+        class="h-9 w-7"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
+        />
+      </svg>
+    </button>
+  </div>
+  <!-- Metrics -->
+  <div class="flex w-full justify-between border-b border-slate-300 py-4">
+    <div class="w-32 flex-col px-4 py-2">
+      <div class="text-center font-bold">1.2K</div>
+      <div class="text-center">Visits</div>
+    </div>
+    <div class="w-32 flex-col px-4 py-2">
+      <div class="text-center font-bold">600</div>
+      <div class="text-center">Likes</div>
+    </div>
+    <div class="w-32 flex-col px-4 py-2">
+      <div class="text-center font-bold">51</div>
+      <div class="text-center">Experiences</div>
+    </div>
+  </div>
+  <!-- Description -->
+  <p class="border-b border-slate-300 py-4 text-slate-700"><%= @spot.description %></p>
+</div>
+<!-- Map Section -->
+<div class="border-b border-slate-300">
+  <div
+    class="
+      mb-4 mt-8 flex h-56 w-full flex-col justify-center rounded-xl border
+    "
+  >
+    <div class="w-full">There will be a map here, I promise!</div>
+  </div>
+  <div class="flex"><svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      class="size-6"
+    >
+      <path
+        fill-rule="evenodd"
+        d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+        clip-rule="evenodd"
+      />
+    </svg>
+    <p class="ml-1"><%= @spot.address %></p>
+  </div>
+  <%= link_to "https://www.google.de/maps/search/#{@spot.address}" do %>
+    <%= render "shared/button_primary", text: "Get directions" %>
+  <% end %>
+</div>
+
+<div class="mt-12">
+  <div class="text-xl font-bold">Events near
+    <span class="text-teal-400"><%= @spot.name %></span>
+  </div>
+  <%= render "shared/event_carousel" %>
+</div>
+
+<div class="my-4">
+  <div class="text-xl font-bold">Reviews
+    <span class="text-teal-400">(401)</span>
+  </div>
+  <%= render "shared/review_carousel" %>
+  <%= render "shared/button_secondary", text: "View all reviews" %>
+</div>
+
+<div class="mt-12 text-xl font-bold">Experiences
+  <span class="text-teal-400">(51)</span>
+</div>
+<div class="divide-y-2 divide-gray-100">
+  <% 3.times do %>
+    <%= render "shared/experience" %>
+  <% end %>
+</div>
+<div class="mb-4">
+  <%= render "shared/button_secondary", text: "View all experiences" %>
+</div>
