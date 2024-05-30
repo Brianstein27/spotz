@@ -1,8 +1,8 @@
 class BookmarksController < ApplicationController
-  before_action :authenticate_user!, only: [ :index, :create, :destroy ]
+  before_action :authenticate_user!, only: [ :create, :destroy ]
 
   def index
-    @bookmarks = Bookmark.all
+    @bookmarks = Bookmark.where(user: current_user)
   end
 
   def create
