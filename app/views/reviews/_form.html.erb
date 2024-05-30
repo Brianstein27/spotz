@@ -1,0 +1,26 @@
+<div>
+
+    <%= form_with model: [@reviewable, @review] do |f| %>
+
+      <div>
+        <%= f.label :rating, "Leave a rating..." %>
+        <%= f.number_field :rating, in: 1.0..5.0 %>
+      </div>
+      <div>
+        <%= f.label :content, "Describe the spot..." %>
+        <%= f.text_field :content, :placeholder => "Leave a review..." %>
+      </div>
+
+        <%= f.submit "Submit" %>
+    <% end %>
+
+
+  <div class="flex-row-reverse stars-rating:text-yellow-500 current-hover:text-yellow-500">
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+  </div>
+
+</div>

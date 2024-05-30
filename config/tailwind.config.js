@@ -26,5 +26,11 @@ module.exports = {
     require("@tailwindcss/forms"),
     require("@tailwindcss/typography"),
     require("@tailwindcss/container-queries"),
+    function ({ addVariant }) {
+      addVariant('stars-rating', '& i:hover ~ i');
+    },
+    function ({ addVariant }) {
+      addVariant('current-hover', '& i:hover');
+    },
   ],
 };
