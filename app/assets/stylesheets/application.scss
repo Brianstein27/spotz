@@ -8,4 +8,8 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-@import "components/swiper"
+@import "components/swiper";
+
+// mapbox
+@import url("https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css");
+
