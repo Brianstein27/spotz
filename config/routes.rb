@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :spots, only: %i[index show] do
     get "create_visit", to: "spots#create_visit"
+    get "delete_visit", to: "spots#delete_visit"
     get "options", to: "spots#options"
     resources :bookmarks, only: %i[create]
     resources :reviews, only: %i[new create index edit update destroy]

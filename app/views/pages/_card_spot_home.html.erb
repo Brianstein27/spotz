@@ -1,4 +1,7 @@
-<div class="w-bigcardwidth mr-6 max-w-sm snap-center">
+<div class="w-bigcardwidth relative mr-6 max-w-sm snap-center">
+  <%= link_to spot_path(spot) do %>
+    <div class="absolute z-50 h-full w-10/12"></div>
+  <% end %>
   <div class="relative">
     <div
       class="
@@ -19,7 +22,7 @@
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          class="h-7 w-7 text-white shadow-md"
+          class="h-7 w-7 text-white"
         >
           <path
             stroke-linecap="round"
@@ -31,7 +34,10 @@
       </div>
     </div>
 
-    <%= cl_image_tag(spot.photos.first.key, class:"w-bigcardwidth h-bigcardheight aspect-square rounded-xl")  %>
+    <%= cl_image_tag(
+      spot.photos.first.key,
+      class: "w-bigcardwidth h-bigcardheight aspect-square rounded-xl",
+    ) %>
   </div>
   <div class="mt-4">
     <div class="flex items-center justify-between ">

@@ -52,7 +52,9 @@
         </div>
         <div class="my-4">
           <% if @visit %>
-              <%= render "shared/button_secondary", text: "Mark as visited" %>
+            <%= link_to spot_delete_visit_path do %>
+              <%= render "shared/button_primary", text: "Visited" %>
+            <% end %>
           <% else %>
             <%= link_to spot_create_visit_path do %>
               <%= render "shared/button_secondary", text: "Mark as visited" %>

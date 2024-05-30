@@ -1,4 +1,7 @@
-<div class="w-full snap-center">
+<div class="relative w-full snap-center">
+  <%= link_to spot_path(spot) do %>
+    <div class="absolute z-50 h-full w-10/12"></div>
+  <% end %>
   <div class="relative">
     <div
       class="
@@ -19,7 +22,7 @@
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          class="h-7 w-7 text-white "
+          class="h-7 w-7 text-white"
         >
           <path
             stroke-linecap="round"
@@ -30,7 +33,11 @@
 
       </div>
     </div>
-    <%= cl_image_tag(spot.photos.first.key, class:"h-bigcardheight aspect-square w-full rounded-xl", alt: "image of #{spot.name}") %>
+    <%= cl_image_tag(
+      spot.photos.first.key,
+      class: "h-bigcardheight aspect-square w-full rounded-xl",
+      alt: "image of #{spot.name}",
+    ) %>
   </div>
   <div class="mt-4">
     <div class="flex items-center justify-between ">
@@ -51,7 +58,7 @@
       </p>
     </div>
     <div class="flex items-center justify-between">
-      <p class="text-description font-light"><%= spot.subtitle %></p>
+      <p class="text-description w-2/3 font-light"><%= spot.subtitle %></p>
       <p class="text-description font-light">3.5 km away</p>
     </div>
   </div>

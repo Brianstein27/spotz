@@ -1,12 +1,13 @@
-<div class="mt-8 flex">
-  <div class="h-9 w-9 rounded-full bg-teal-400 text-teal-400">.</div>
-  <div class="ml-2 text-4xl font-bold">profile</div>
+<div class="mt-8 flex justify-between">
 
+  <div class="flex">
+    <div class="h-9 w-9 rounded-full bg-teal-400 text-teal-400">.</div>
+    <div class="ml-2 text-4xl font-bold">profile</div>
+  </div>
 
-<%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "btn btn-dark" %>
-
+  <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete } %>
 </div>
 
-<%= link_to destroy_user_session_path do %>
-  <%= render "shared/button_primary", text: "Log out", data: { turbo_method: "delete" } %>
+<% @visits.each do |visit| %>
+  <%= render "shared/card_spot_bookmark", spot: visit.spot %>
 <% end %>

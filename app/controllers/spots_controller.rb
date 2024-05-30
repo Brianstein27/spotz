@@ -4,11 +4,11 @@ class SpotsController < ApplicationController
 
   def index
     @spots = Spot.all
-    if params[:query].present?
-      subquery = "name @@ :query OR subtitle @@ :query OR category @@ :query OR description @@ :query OR address @@ :query"
-      # if you wanna search through associations, you need to JOIN, see search lecture .4
-      @spots = @spots.where(subquery, query: "%#{params[:query]}%")
-    end
+    return unless params[:query].present?
+
+    subquery = "name @@ :query OR subtitle @@ :query OR category @@ :query OR description @@ :query OR address @@ :query"
+    # if you wanna search through associations, you need to JOIN, see search lecture .4
+    @spots = @spots.where(subquery, query: "%#{params[:query]}%")
   end
 
   def show
@@ -33,7 +33,12 @@ class SpotsController < ApplicationController
     redirect_to @spot, notice: "spot was added to visited" if @visit.save
   end
 
-  def destroy_visit
+  def delete_visit
+    @spot = Spot.find(params[:spot_id])
+    @visit = Visit.where(user: current_user, spot: @spot).first
+    @visit.delete
+
+    redirect_to @spot, notice: "spot was removed from visited list"
   end
 
   private
