@@ -1,16 +1,19 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
-
-# db/seeds.rb
 User.destroy_all
 Spot.destroy_all
+
+# Seeding from scraped Data
+
+# file_path = "events.csv"
+
+# CSV.foreach(file_path, headers: :first_row) do |row|
+
+#   Event.create!(
+#     date: row["Date"],
+#     time: row["Time"],
+#     title: row ["Title"],
+#     address: row["Address"]
+#   )
+# end
 
 spots = [
   { name: "Brandenburger Tor", address: "Pariser Platz, 10117 Berlin", category: "Culture", subtitle: "Iconic City Gate", description: "A neoclassical monument and one of the best-known landmarks of Germany." },
