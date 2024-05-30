@@ -22,6 +22,7 @@
   <body class="relative">
     <div class="mx-4 mb-20 mt-12">
       <%= yield %>
+      <%= turbo_frame_tag "modal", class: "fixed bottom-16" %>
     </div>
     <%= render "shared/navbar" %>
   </body>
