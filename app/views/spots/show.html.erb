@@ -33,16 +33,26 @@
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper w-full ">
       <!-- Slides -->
-      <% 10.times do %>
+      <%= @spot.photos.each do |photo|  %>
+      <div class="swiper-slide w-full bg-gradient-to-b">
+        <%= cl_image_tag photo.key, class: "my-transparency-gradient h-full w-full object-cover" %>
+          <!-- <img
+            class="my-transparency-gradient h-full w-full object-cover"
+            src="<%= photo %>"
+            alt="a random image"
+          > -->
+        </div>
+      <% end %>
+      <!-- <% 10.times do %>
         <div class="swiper-slide w-full bg-gradient-to-b">
 
           <img
             class="my-transparency-gradient h-full w-full object-cover"
-            src="https://images.unsplash.com/photo-1603787935137-58167f55336f?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src="<%= @spot.img_url %>"
             alt="a random image"
           >
         </div>
-      <% end %>
+      <% end %> -->
     </div>
     <!-- If we need pagination -->
     <div class="swiper-pagination pb-4"></div>
