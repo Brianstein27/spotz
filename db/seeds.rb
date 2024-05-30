@@ -3,7 +3,10 @@ require "open-uri"
 require "uri"
 
 User.destroy_all
+puts "Deleting user/s."
+
 Spot.destroy_all
+puts "Deleting location/s."
 
 # Seeding from scraped Data
 
@@ -65,7 +68,9 @@ spots.each_with_index do |spot, index|
   new_spot.save
 end
 
-puts "Created #{Spot.count} locations."
+puts "Created #{Spot.count} location/s."
+
+puts "Creating user/s."
 
 users =  [ { email: "user@user.com", password: "123456", username: "user1" } ]
 
