@@ -32,7 +32,6 @@ export default class extends Controller {
       new mapboxgl.Marker(el)
         .setLngLat([ marker.longitude, marker.latitude ])
         .addTo(this.map)
-      console.log("hello")
     })
   }
 }
