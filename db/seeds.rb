@@ -1,4 +1,7 @@
-Review.destroy_all
+require "cloudinary"
+require "open-uri"
+require "uri"
+
 User.destroy_all
 puts "Deleting user/s."
 
@@ -19,48 +22,50 @@ puts "Deleting location/s."
 #   )
 # end
 
-spots = [
-  { name: "Brandenburger Tor", address: "Pariser Platz, 10117 Berlin", category: "Culture", subtitle: "Iconic City Gate", description: "A neoclassical monument and one of the best-known landmarks of Germany." },
-  { name: "Reichstag Building", address: "Platz der Republik 1, 11011 Berlin", category: "Culture", subtitle: "Parliament Building", description: "The meeting place of the German parliament, known for its historic and modern significance." },
-  { name: "Berlin Cathedral", address: "Am Lustgarten, 10178 Berlin", category: "Culture", subtitle: "Evangelical Church", description: "A famous cathedral on Museum Island in the Mitte borough." },
-  { name: "Museum Island", address: "Bodestraße 1-3, 10178 Berlin", category: "Culture", subtitle: "Museum Complex", description: "An island in the Spree river housing five world-renowned museums." },
-  { name: "Alexanderplatz", address: "Alexanderplatz, 10178 Berlin", category: "Hangout", subtitle: "Historic Square", description: "A large Hangout and transport hub in central Berlin." },
-  { name: "Berlin TV Tower", address: "Panoramastraße 1A, 10178 Berlin", category: "Culture", subtitle: "Observation Tower", description: "The tallest structure in Germany, offering panoramic views of Berlin." },
-  { name: "East Side Gallery", address: "Mühlenstraße 3-100, 10243 Berlin", category: "Culture", subtitle: "Open-Air Gallery", description: "An international memorial for freedom, it consists of a series of murals painted directly on a remnant of the Berlin Wall." },
-  { name: "Checkpoint Charlie", address: "Friedrichstraße 43-45, 10117 Berlin", category: "Culture", subtitle: "Former Border Crossing", description: "The best-known Berlin Wall crossing point between East and West Berlin during the Cold War." },
-  { name: "Charlottenburg Palace", address: "Spandauer Damm 10-22, 14059 Berlin", category: "Culture", subtitle: "Former Royal Palace", description: "The largest palace in Berlin and the only surviving royal residence in the city." },
-  { name: "Potsdamer Platz", address: "Potsdamer Platz, 10785 Berlin", category: "Hangout", subtitle: "Central Spot", description: "A major public square and traffic intersection in the center of Berlin." },
-  { name: "Gendarmenmarkt", address: "Gendarmenmarkt, 10117 Berlin", category: "Hangout", subtitle: "Historic Market Square", description: "One of Berlin's most beautiful squares, featuring the Konzerthaus and French and German Cathedrals." },
-  { name: "Berlin Zoological Garden", address: "Hardenbergplatz 8, 10787 Berlin", category: "Hangout", subtitle: "Zoological Garden", description: "The oldest and best-known zoo in Germany." },
-  { name: "Kaiser Wilhelm Memorial Church", address: "Breitscheidplatz, 10789 Berlin", category: "Culture", subtitle: "Memorial Church", description: "A Protestant church and a memorial to the Kaiser Wilhelm II." },
-  { name: "Hackescher Markt", address: "Hackescher Markt, 10178 Berlin", category: "Hangout", subtitle: "Shopping and Dining Area", description: "A lively area known for its nightlife, restaurants, and shopping." },
-  { name: "Berlin Wall Memorial", address: "Bernauer Str. 111, 13355 Berlin", category: "Culture", subtitle: "Memorial Site", description: "A monument to the divided city and the victims of communist tyranny." },
-  { name: "Victory Column", address: "Großer Stern, 10557 Berlin", category: "Culture", subtitle: "Triumphal Column", description: "A major tourist attraction in Berlin, offering great views from the top." },
-  { name: "Treptower Park", address: "Alt-Treptow, 12435 Berlin", category: "Nature", subtitle: "Hangout Park", description: "A large public park alongside the river Spree." },
-  { name: "Kurfürstendamm", address: "Kurfürstendamm, 10719 Berlin", category: "Hangout", subtitle: "Shopping Boulevard", description: "One of the most famous avenues in Berlin, known for its shopping and nightlife." },
-  { name: "Tempelhofer Feld", address: "Tempelhofer Damm, 12101 Berlin", category: "Nature", subtitle: "Public Park", description: "A large park created from the former Tempelhof Airport, used for various recreational activities." },
-  { name: "Berlin Philharmonie", address: "Herbert-von-Karajan-Straße 1, 10785 Berlin", category: "Culture", subtitle: "Concert Hall", description: "A renowned concert hall home to the Berlin Philharmonic Orchestra." },
-  { name: "Berghain", address: "Am Wriezener Bahnhof, 10243 Berlin", category: "Nightlife", subtitle: "Famous Club", description: "One of the most famous techno clubs in the world." },
-  { name: "Watergate", address: "Falckensteinstraße 49, 10997 Berlin", category: "Nightlife", subtitle: "Nightclub", description: "A nightclub known for its location on the river Spree and its high-quality electronic music." },
-  { name: "Kater Blau", address: "Holzmarktstraße 25, 10243 Berlin", category: "Nightlife", subtitle: "Nightclub", description: "A renowned club known for its eclectic music and unique atmosphere." },
-  { name: "Clärchens Ballhaus", address: "Auguststraße 24, 10117 Berlin", category: "Nightlife", subtitle: "Dance Hall and Restaurant", description: "A historic dance hall and restaurant offering a variety of music and dancing styles." },
-  { name: "Tresor", address: "Köpenicker Str. 70, 10179 Berlin", category: "Nightlife", subtitle: "Techno Club", description: "A legendary techno club located in a former power plant." },
-  { name: "Prater Garten", address: "Kastanienallee 7-9, 10435 Berlin", category: "Food'n'Drinks", subtitle: "Beer Garden", description: "The oldest beer garden in Berlin, offering a variety of beers and traditional German food." },
-  { name: "Cookies Cream", address: "Behrenstraße 55, 10117 Berlin", category: "Food'n'Drinks", subtitle: "Vegetarian Restaurant", description: "An upscale vegetarian restaurant with a creative menu." },
-  { name: "Zur Letzten Instanz", address: "Waisenstraße 14-16, 10179 Berlin", category: "Food'n'Drinks", subtitle: "Historic Restaurant", description: "Berlin's oldest restaurant, serving traditional German cuisine." },
-  { name: "Bar Tausend", address: "Schiffbauerdamm 11, 10117 Berlin", category: "Food'n'Drinks", subtitle: "Cocktail Bar", description: "A stylish bar known for its innovative cocktails and unique atmosphere." },
-  { name: "The Barn", address: "Auguststraße 58, 10119 Berlin", category: "Food'n'Drinks", subtitle: "Coffee Shop", description: "A famous coffee shop known for its high-quality coffee and minimalist design." },
-  { name: "Restaurant Tim Raue", address: "Rudi-Dutschke-Straße 26, 10969 Berlin", category: "Food'n'Drinks", subtitle: "Fine Dining", description: "A Michelin-starred restaurant offering Asian-inspired cuisine by Chef Tim Raue." },
-  { name: "Katz Orange", address: "Bergstraße 22, 10115 Berlin", category: "Food'n'Drinks", subtitle: "Modern European", description: "A restaurant known for its cozy atmosphere and modern European dishes." },
-  { name: "Facil", address: "Potsdamer Straße 3, 10785 Berlin", category: "Food'n'Drinks", subtitle: "Gourmet Restaurant", description: "A Michelin-starred restaurant offering innovative, high-end cuisine." },
-  { name: "Grill Royal", address: "Friedrichstraße 105b, 10117 Berlin", category: "Food'n'Drinks", subtitle: "Steakhouse", description: "A chic steakhouse known for its high-quality meats and celebrity clientele." },
-  { name: "Nobelhart & Schmutzig", address: "Friedrichstraße 218, 10969 Berlin", category: "Food'n'Drinks", subtitle: "Contemporary German", description: "A restaurant focusing on locally sourced ingredients and contemporary German cuisine." },
-  { name: "Spielplatz", address: "Marion-Gräfin-Dönhoff-Platz, 10117 Berlin", category: "Playground", subtitle: "Playground in Berlin Mitte", description: "Great playground for kids." }
+spot_images = [
+ ["https://res.cloudinary.com/dn7d3hatk/image/upload/v1717075407/Museumsinsel1_y3he0x.jpg",
+ "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717075568/Museumsinsel3_i79fwp.jpg",
+ "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717075461/Museumsinsel2_d4aqmt.jpg",
+ "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717075573/Museumsinsel4_nfvbxw.jpg"],
+
+ ["https://res.cloudinary.com/dn7d3hatk/image/upload/v1717076244/Oberbaumbruecke1_dvw65q.jpg",
+ "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717076276/Oberbaumbruecke2_ngkiad.jpg",
+ "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717076357/Oberbaumbruecke3_dqqtih.jpg",
+ "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717076363/Oberbaumbruecke4_wgq4y3.jpg"],
+
+ ["https://res.cloudinary.com/dn7d3hatk/image/upload/v1717076827/Treptowerpark1_g3g1m9.jpg",
+ "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717076831/Treptowerpark2_oibtgx.jpg",
+ "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717076836/Treptowerpark3_detxbb.jpg",
+ "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717076841/Treptowerpark4_trdfwn.jpg"],
+
+ ["https://res.cloudinary.com/dn7d3hatk/image/upload/v1717077367/Eastsidegallery3_pt3ynr.jpg",
+ "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717077359/Eastsidegallery1_o3dca0.jpg",
+ "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717077362/Eastsidegallery2_drqkic.jpg",
+ "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717077372/Eastsidegallery4_szhxfb.jpg"],
+
+ ["https://res.cloudinary.com/dn7d3hatk/image/upload/v1717077927/hallmann--klee2_xdavsn.jpg",
+ "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717077919/hallmann--klee_bn6wuw.jpg",
+ "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717078034/hallmann--klee3_zf20z0.jpg",
+ "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717078082/hallmann--klee4_zkmxuu.jpg"],
+
 ]
 
-puts "Creating location/s."
-spots.each do |spot|
-  Spot.create!(spot)
+
+spots = [
+  { name: "Museum Island", address: "Bodestrasse 1-3, 10178 Berlin", category: "Culture", subtitle: "Museum Complex", description: "An island in the Spree river housing five world-renowned museums." },
+  { name: "Oberbaum Bridge", address: "Warschauer Strasse 43, 10243 Berlin", category: "Hangout", subtitle: "Iconic Spot for Sunsets", description: "The perfect spot to talk and philosophise with your friends about anything in a very relaxed and laid-back atmosphere." },
+  { name: "Treptower Park", address: "Am Treptower Park 20, 12435 Berlin", category: "Nature", subtitle: "Treptower Park is a popular public park at the Spree river.", description: "With its unique mix of river landscape, extensive meadows, tranquil areas, gardens, and places to eat and drink, Treptower Park in the district of Treptow-Köpenick is an attractive excursion destination close to the city centre. Thanks to its size, the park offers a lot of space for every form of recreation. On sunny weekends, residents from Kreuzberg, Neukölln and Friedrichshain conquer the Volkspark." },
+  { name: "East Side Gallery", address: "Muehlenstrasse 3-100, 10243 Berlin", category: "Culture", subtitle: "Open-Air Gallery", description: "An international memorial for freedom, it consists of a series of murals painted directly on a remnant of the Berlin Wall." },
+  { name: "Hallmann & Klee", address: "Boehmische Strasse 13, 12055 Berlin", category: "Food'n'Drinks", subtitle: "Fine Dining", description: "You will find the restaurant on the small Boehmischer Platz, whose lively hustle and bustle makes the terrace on the sidewalk a popular spot in summer. The interior also has its charm: striking whitewashed brick walls, beautiful floorboards and modern design elements create an almost purist, charming urban ambience." },
+]
+
+spots.each_with_index do |spot, index|
+  new_spot = Spot.create!(spot)
+  spot_images[index].each do |image|
+    new_spot.photos.attach(io: URI.open(image), filename: File.basename(image))
+  end
+  puts "Spot created! #{new_spot.name}"
+  new_spot.save
 end
 
 puts "Created #{Spot.count} location/s."
