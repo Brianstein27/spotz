@@ -79,3 +79,9 @@ gem "tailwindcss-rails", "~> 2.6"
 
 #cloudinary
 gem "cloudinary"
+
+#geocoder
+gem "geocoder"
+
+#when importmap-rails causes problems use gem below!
+# gem "importmap-rails", "~> 1.2.3"

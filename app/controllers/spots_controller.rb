@@ -7,6 +7,11 @@ class SpotsController < ApplicationController
   end
 
   def show
+    @markers =
+      [{
+        latitude: @spot.latitude,
+        longitude: @spot.longitude
+      }]
   end
 
   private
