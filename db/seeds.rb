@@ -1,5 +1,9 @@
+Review.destroy_all
 User.destroy_all
+puts "Deleting user/s."
+
 Spot.destroy_all
+puts "Deleting location/s."
 
 # Seeding from scraped Data
 
@@ -54,11 +58,14 @@ spots = [
   { name: "Spielplatz", address: "Marion-Gräfin-Dönhoff-Platz, 10117 Berlin", category: "Playground", subtitle: "Playground in Berlin Mitte", description: "Great playground for kids." }
 ]
 
+puts "Creating location/s."
 spots.each do |spot|
   Spot.create!(spot)
 end
 
-puts "Created #{Spot.count} locations."
+puts "Created #{Spot.count} location/s."
+
+puts "Creating user/s."
 
 users =  [ { email: "user@user.com", password: "123456", username: "user1" } ]
 
