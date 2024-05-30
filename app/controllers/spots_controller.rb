@@ -28,9 +28,6 @@ class SpotsController < ApplicationController
   end
 
   def destroy_visit
-    raise
-
-    redirect_to @spot
   end
 
   private
