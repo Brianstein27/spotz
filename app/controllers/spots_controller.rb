@@ -10,7 +10,8 @@ class SpotsController < ApplicationController
     @markers =
       [{
         latitude: @spot.latitude,
-        longitude: @spot.longitude
+        longitude: @spot.longitude,
+        marker_html: render_to_string(partial: "marker")
       }]
   end
 
