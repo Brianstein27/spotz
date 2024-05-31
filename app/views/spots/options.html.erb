@@ -62,7 +62,15 @@
           <% end %>
         </div>
         <div class="my-4">
-          <%= render "shared/button_secondary", text: "Bookmark spot" %>
+          <% if @bookmark %>
+            <%= link_to spot_delete_bookmark_path, data: {turbo_frame: "_top"} do %>
+              <%= render "shared/button_primary", text: "Bookmarked" %>
+            <% end %>
+          <% else %>
+            <%= link_to spot_create_bookmark_path, data: {turbo_frame: "_top"} do %>
+              <%= render "shared/button_secondary", text: "Add to bookmarks" %>
+            <% end %>
+          <% end %>
         </div>
         <div class="my-4">
           <%= render "shared/button_secondary", text: "Leave a review" %>
