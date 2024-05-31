@@ -18,6 +18,9 @@
   <!-- share button -->
   <div class="absolute right-0 top-8 z-50 flex">
     <svg
+      data-controller="share"
+      data-share-url-value="<%= spot_url(@spot) %>"
+      data-action="click->share#share"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 16 16"
       fill="currentColor"
@@ -50,27 +53,8 @@
         <div class="swiper-slide w-full bg-gradient-to-b">
           <%= cl_image_tag photo.key,
           class: "my-transparency-gradient h-full w-full object-cover" %>
-          <!--
-          <img
-            class="my-transparency-gradient h-full w-full object-cover"
-            src="<%= photo %>"
-            alt="a random image"
-          >
-          -->
         </div>
       <% end %>
-      <!--
-      <% 10.times do %>
-        <div class="swiper-slide w-full bg-gradient-to-b">
-
-          <img
-            class="my-transparency-gradient h-full w-full object-cover"
-            src="<%= @spot.img_url %>"
-            alt="a random image"
-          >
-        </div>
-      <% end %>
-      -->
     </div>
     <!-- If we need pagination -->
     <div class="swiper-pagination pb-4"></div>
