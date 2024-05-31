@@ -1,6 +1,6 @@
 <%= turbo_frame_tag "modal" do %>
   <div
-    class="fixed inset-0 z-10 overflow-y-auto"
+    class="fixed inset-0 z-40 overflow-y-auto"
     aria-labelledby="modal-title"
     role="dialog"
     aria-modal="true"
@@ -73,7 +73,9 @@
           <% end %>
         </div>
         <div class="my-4">
-          <%= render "shared/button_secondary", text: "Leave a review" %>
+          <%= link_to new_spot_review_path, data: { turbo_frame: "modal" } do %>
+            <%= render "shared/button_secondary", text: "Leave a review" %>
+          <% end %>
         </div>
         <div class="my-4">
           <%= render "shared/button_secondary", text: "Add to an experience" %>

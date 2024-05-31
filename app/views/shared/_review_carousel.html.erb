@@ -4,9 +4,9 @@
   "
 >
   <div class="ml-4 flex">
-    <% 5.times do |spot| %>
+    <% reviews.each do |review| %>
       <div class="ml-2">
-        <%= render "shared/review" %>
+        <%= render "shared/review", review: review %>
       </div>
     <% end %>
   </div>
