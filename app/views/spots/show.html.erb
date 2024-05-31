@@ -206,9 +206,9 @@
 
 <div class="my-4">
   <div class="text-xl font-bold">Reviews
-    <span class="text-teal-400">(401)</span>
+    <span class="text-teal-400">(<%= @spot.reviews.count %>)</span>
   </div>
-  <%= render "shared/review_carousel" %>
+  <%= render "shared/review_carousel", reviews: @spot.reviews %>
   <%= render "shared/button_secondary", text: "View all reviews" %>
 </div>
 
