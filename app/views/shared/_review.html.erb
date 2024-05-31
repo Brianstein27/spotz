@@ -1,8 +1,10 @@
 <div class="w-bigcardwidth my-4 rounded-xl border border-slate-300 p-4">
-  <p><%= review.content %></p>
+  <p>This is a review. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+    sed d...
+  </p>
   <div class="my-2 flex">
     <!-- star rating -->
-    <% review.rating.times do %>
+    <% 5.times do %>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 16 16"
@@ -21,7 +23,7 @@
     <div class="flex w-full items-center justify-between">
       <p>Yesterday</p>
       <div class="flex items-center">
-        <div class="mr-1"><%= review.user.username %></div>
+        <div class="mr-1">user001</div>
         <div class="size-8 rounded-full ring-2 ring-white">
           <img
             class="rounded-full"
