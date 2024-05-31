@@ -14,15 +14,14 @@
   Events
   <span class="text-teal-400">near you</span>
 </div>
-<%= render "shared/event_carousel" %>
+<%= render "shared/event_carousel", events: @events %>
 
 <div class="mt-8 text-2xl font-bold">Curated
   <span class="text-teal-400">Experiences</span>
 </div>
 <div class="divide-y-2 divide-gray-100">
-  <% 3.times do %>
-    <%= render "shared/experience" %>
+  <% @experiences.each do |experience| %>
+    <%= render "shared/experience", experience: experience %>
   <% end %>
 </div>
 <%= render "shared/button_secondary", text: "View all experiences" %>
-

@@ -1,14 +1,13 @@
 <div
   class="
-    no-scrollbar -mx-4 my-4 inline-flex w-screen flex-nowrap overflow-x-auto 
+    no-scrollbar -mx-4 my-4 inline-flex w-screen flex-nowrap overflow-x-auto
   "
 >
   <div class="ml-4 flex">
-    <% 10.times do |spot| %>
+    <% events.each do |event| %>
       <%= link_to () do %>
-        <%= render "shared/card_event" %>
+        <%= render "shared/card_event", event: event %>
       <% end %>
     <% end %>
   </div>
 </div>
-

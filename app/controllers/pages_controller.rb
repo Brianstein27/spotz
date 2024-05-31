@@ -3,6 +3,8 @@ class PagesController < ApplicationController
 
   def home
     @spots = Spot.all
+    @events = Event.all
+    @experiences = Experience.all.sample(3)
   end
 
   def profile
@@ -10,4 +12,6 @@ class PagesController < ApplicationController
     @bookmarks = Bookmark.where(user: current_user)
     @reviews = Review.where(user: current_user)
   end
+
+
 end
