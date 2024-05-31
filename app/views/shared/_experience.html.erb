@@ -2,7 +2,7 @@
 
   <div class="flex items-center justify-between">
     <%= link_to () do %>
-      <div class="text-wrap font-bold leading-5">This is a curated list of spots</div>
+      <div class="text-wrap font-bold leading-5"><%= experience.name %></div>
     <% end %>
     <div class="ml-6">
       <div class="text-description flex items-center font-light text-gray-400"><div>user001</div>
@@ -23,13 +23,10 @@
     "
   >
     <div class="ml-4 flex">
-      <% 15.times do %>
+      <% experience.spots.each do |spot| %>
         <div class="mr-1 h-14 w-14">
-          <img
-            class="h-full w-full"
-            src="https://images.unsplash.com/photo-1560969184-10fe8719e047?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt=""
-          >
+          <%= cl_image_tag(spot.photos.first.key,class: "h-full w-full",
+          ) %>
         </div>
       <% end %>
     </div>

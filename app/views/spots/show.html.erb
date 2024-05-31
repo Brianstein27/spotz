@@ -201,7 +201,7 @@
   <div class="text-xl font-bold">Events near
     <span class="text-teal-400"><%= @spot.name %></span>
   </div>
-  <%= render "shared/event_carousel" %>
+  <%= render "shared/event_carousel", events: @events  %>
 </div>
 
 <div class="my-4">
@@ -216,8 +216,9 @@
   <span class="text-teal-400">(51)</span>
 </div>
 <div class="divide-y-2 divide-gray-100">
-  <% 3.times do %>
-    <%= render "shared/experience" %>
+
+  <% @experiences.each do |experience| %>
+    <%= render "shared/experience", experience: experience %>
   <% end %>
 </div>
 <div class="mb-4">

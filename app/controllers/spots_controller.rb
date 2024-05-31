@@ -19,6 +19,8 @@ class SpotsController < ApplicationController
         marker_html: render_to_string(partial: "marker")
       }]
     @bookmark = Bookmark.where(user: current_user, spot: @spot).first
+    @events = Event.all
+    @experiences = Experience.all
   end
 
   def options
