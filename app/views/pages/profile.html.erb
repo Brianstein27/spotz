@@ -1,12 +1,40 @@
 <div class="mt-8 flex justify-between">
-
   <div class="flex">
     <div class="h-9 w-9 rounded-full bg-teal-400 text-teal-400">.</div>
     <div class="ml-2 text-4xl font-bold">profile</div>
   </div>
-
-  <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete } %>
 </div>
+
+  <div class="block items-center justify-center p-1">
+      <img class="w-40 h-40 rounded-full ring mx-auto" src="https://images.unsplash.com/photo-1586374579358-9d19d632b6df?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="User Avatar">
+    <div class="flex justify-center">
+      <div class="block m-1">
+        <h2>Jamiroquai</h2>
+        <p class="mt-1">@username</p>
+      </div>
+    </div>
+  </div>
+
+      <div class="mt-4 flex justify-evenly space-around text-sm text-gray-600">
+
+        <div>
+          <span class=>25 Visits</span>
+        </div>
+        <div> | </div>
+        <div>
+          <span class=" text-green-500">12 Experiences</span>
+        </div>
+        <div> | </div>
+        <div>
+          <span>132 Reviews</span>
+        </div>
+
+      </div>
+
+  <div class="w-full">
+    <%= render "shared/review" %>
+  </div>
+
 
 <% @visits.each do |visit| %>
   <%= render "shared/card_spot_bookmark", spot: visit.spot %>
