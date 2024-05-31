@@ -4,11 +4,11 @@ class SpotsController < ApplicationController
 
   def index
     @spots = Spot.all
-    if params[:query].present?
-      subquery = "name @@ :query OR subtitle @@ :query OR category @@ :query OR description @@ :query OR address @@ :query"
-      # if you wanna search through associations, you need to JOIN, see search lecture .4
-      @spots = @spots.where(subquery, query: "%#{params[:query]}%")
-    end
+    return unless params[:query].present?
+
+    subquery = "name @@ :query OR subtitle @@ :query OR category @@ :query OR description @@ :query OR address @@ :query"
+    # if you wanna search through associations, you need to JOIN, see search lecture .4
+    @spots = @spots.where(subquery, query: "%#{params[:query]}%")
   end
 
   def show
@@ -18,10 +18,12 @@ class SpotsController < ApplicationController
         longitude: @spot.longitude,
         marker_html: render_to_string(partial: "marker")
       }]
+    @bookmark = Bookmark.where(user: current_user, spot: @spot).first
   end
 
   def options
     @visit = Visit.where(user: current_user, spot: params[:spot_id]).first
+    @bookmark = Bookmark.where(user: current_user, spot: params[:spot_id]).first
   end
 
   def create_visit
@@ -33,7 +35,29 @@ class SpotsController < ApplicationController
     redirect_to @spot, notice: "spot was added to visited" if @visit.save
   end
 
-  def destroy_visit
+  def delete_visit
+    @spot = Spot.find(params[:spot_id])
+    @visit = Visit.where(user: current_user, spot: @spot).first
+    @visit.delete
+
+    redirect_to @spot, notice: "spot was removed from visited list"
+  end
+
+  def create_bookmark
+    @bookmark = Bookmark.new
+    @spot = Spot.find(params[:spot_id]) if params[:spot_id]
+    @bookmark.user = current_user
+    @bookmark.spot = @spot
+
+    redirect_to @spot, notice: "spot was added to bookmarks" if @bookmark.save
+  end
+
+  def delete_bookmark
+    @spot = Spot.find(params[:spot_id])
+    @bookmark = Bookmark.where(user: current_user, spot: @spot).first
+    @bookmark.delete
+
+    redirect_to @spot, notice: "spot was removed from bookmarks"
   end
 
   private
