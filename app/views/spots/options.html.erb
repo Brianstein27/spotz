@@ -11,24 +11,14 @@
         text-center
       "
     >
-      <!-- Background overlay, show/hide based on modal state. Entering:
-      "ease-out duration-300" From: "opacity-0" To: "opacity-100" Leaving:
-      "ease-in duration-200" From: "opacity-100" To: "opacity-0" -->
       <div
         class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
         aria-hidden="true"
       ></div>
-      <!-- This element is to trick the browser into centering the modal
-      contents. -->
       <span
         class="hidden sm:inline-block sm:h-screen sm:align-middle"
         aria-hidden="true"
       >&#8203;</span>
-      <!-- Modal panel, show/hide based on modal state. Entering: "ease-out
-      duration-300" From: "opacity-0 translate-y-4 sm:translate-y-0
-      sm:scale-95" To: "opacity-100 translate-y-0 sm:scale-100" Leaving:
-      "ease-in duration-200" From: "opacity-100 translate-y-0 sm:scale-100" To:
-      "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" -->
       <div
         class="
           -mx-4 mb-28 inline-block w-full transform overflow-hidden rounded-xl bg-white
@@ -52,35 +42,46 @@
         </div>
         <div class="my-4">
           <% if @visit %>
-            <%= link_to spot_delete_visit_path do %>
+            <%= button_to visit_path(params[:spot_id]), data: {turbo_frame: "_top"}, method: :delete, class: "w-full" do %>
               <%= render "shared/button_primary", text: "Visited" %>
             <% end %>
           <% else %>
-            <%= link_to spot_create_visit_path do %>
+            <%= button_to spot_visits_path, data: {turbo_frame: "_top"}, class: "w-full" do %>
               <%= render "shared/button_secondary", text: "Mark as visited" %>
             <% end %>
           <% end %>
         </div>
         <div class="my-4">
           <% if @bookmark %>
-            <%= link_to spot_delete_bookmark_path, data: {turbo_frame: "_top"} do %>
+            <%= button_to bookmark_path(params[:spot_id]), data: {turbo_frame: "_top"}, method: :delete, class: "w-full" do %>
               <%= render "shared/button_primary", text: "Bookmarked" %>
             <% end %>
           <% else %>
-            <%= link_to spot_create_bookmark_path, data: {turbo_frame: "_top"} do %>
+            <%= button_to spot_bookmarks_path, data: {turbo_frame: "_top"}, class: "w-full" do %>
               <%= render "shared/button_secondary", text: "Add to bookmarks" %>
             <% end %>
           <% end %>
         </div>
         <div class="my-4">
-          <%= link_to new_spot_review_path, data: { turbo_frame: "modal" } do %>
-            <%= render "shared/button_secondary", text: "Leave a review" %>
+          <% if @review %>
+            <div class="flex">
+              <%= link_to edit_review_path(@review), data: {turbo_frame: "modal"}, class: "w-full" do %>
+                <%= render "shared/button_secondary", text: "Edit review" %>
+              <% end %>
+              <%= link_to review_path(@review), data: {turbo_method: :delete}, class: "w-full ml-2" do %>
+                <%= render "shared/button_delete", text: "Delete review" %>
+              <% end %>
+            </div>
+          <% else %>
+            <%= link_to new_spot_review_path, data: { turbo_frame: "modal" }, class: "w-full" do %>
+              <%= render "shared/button_secondary", text: "Leave a review" %>
+            <% end %>
+
           <% end %>
         </div>
         <div class="my-4">
           <%= render "shared/button_secondary", text: "Add to an experience" %>
         </div>
-
       </div>
     </div>
   </div>
