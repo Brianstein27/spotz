@@ -12,7 +12,7 @@ class BookmarksController < ApplicationController
     @bookmark.user = current_user
     @bookmark.spot = @spot
 
-    redirect_to @spot, notice: "spot was added to bookmarks" if @bookmark.save
+    redirect_back(fallback_location: @spot) if @bookmark.save
   end
 
   def destroy
@@ -20,7 +20,7 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.where(user: current_user, spot: @spot).first
     @bookmark.delete
 
-    redirect_to @spot, notice: "spot was removed from bookmarks"
+    redirect_back(fallback_location: @spot)
   end
 
   private
