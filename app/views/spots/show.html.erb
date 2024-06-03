@@ -192,9 +192,11 @@
     </svg>
     <p class="ml-1"><%= @spot.address %></p>
   </div>
-  <%= link_to "https://www.google.de/maps/search/#{@spot.address}" do %>
-    <%= render "shared/button_primary", text: "Get directions" %>
-  <% end %>
+  <div class="my-4">
+    <%= link_to "https://www.google.de/maps/search/#{@spot.address}" do %>
+      <%= render "shared/button_primary", text: "Get directions" %>
+    <% end %>
+  </div>
 </div>
 
 <div class="mt-12">

@@ -36,9 +36,9 @@
         "
       >
         <div>
-          <%= form_with model: [@reviewable, @review] do |f| %>
+          <%= form_with model: @review do |f| %>
             <div class="flex w-full justify-between">
-              <%= link_to spot_path(params[:spot_id]) do %>
+              <%= link_to spot_path(@review.reviewable_id) do %>
                 Cancel
               <% end %>
               <%= button_tag(type: 'submit', class: "font-bold text-teal-400") do %>

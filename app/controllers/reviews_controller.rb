@@ -1,7 +1,6 @@
 class ReviewsController < ApplicationController
-
   def index
-    @reviews = Review.where()
+    @reviews = Review.where
   end
 
   def new
@@ -29,7 +28,37 @@ class ReviewsController < ApplicationController
     end
   end
 
-private
+  def edit
+    @review = Review.find(params[:id])
+  end
+
+  def update
+    @review = Review.find(params[:id])
+    @review.update(review_params)
+
+    return unless @review.reviewable_type == "Spot"
+
+    redirect_to spot_path(@review.reviewable)
+    return unless @review.reviewable_type == "Experience"
+
+    redirect_to experience_path(@review.reviewable)
+  end
+
+  def destroy
+    @review = Review.find(params[:id])
+    @reviewable = @review.reviewable
+    @type = @review.reviewable_type
+
+    @review.delete
+
+    if @type == "Spot"
+      redirect_to spot_path(@reviewable)
+    elsif @type == "Experience"
+      redirect_to experience_path(@reviewable)
+    end
+  end
+
+  private
 
   def review_params
     params.require(:review).permit(:content, :rating)

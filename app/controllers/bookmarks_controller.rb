@@ -1,23 +1,26 @@
 class BookmarksController < ApplicationController
-  before_action :authenticate_user!, only: [ :create, :destroy ]
+  before_action :authenticate_user!, only: %i[create destroy]
 
   def index
     @bookmarks = Bookmark.where(user: current_user)
   end
 
   def create
-    @bookmark = current_user.bookmarks.new(bookmark_params)
-    if @bookmark.save
-      redirect_to bookmarks_path
-    else
-      render :new, status: :unprocessable_entity
-    end
+    @bookmark = Bookmark.new
+    @spot = Spot.find(params[:spot_id]) if params[:spot_id]
+    @spot = Spot.find(params[:id]) if params[:id]
+    @bookmark.user = current_user
+    @bookmark.spot = @spot
+
+    redirect_to @spot, notice: "spot was added to bookmarks" if @bookmark.save
   end
 
   def destroy
-    @bookmark = current_user.bookmarks.find(params[:id])
-    @bookmark.destroy
-    redirect_to bookmarks_path
+    @spot = Spot.find(params[:id])
+    @bookmark = Bookmark.where(user: current_user, spot: @spot).first
+    @bookmark.delete
+
+    redirect_to @spot, notice: "spot was removed from bookmarks"
   end
 
   private
@@ -25,5 +28,4 @@ class BookmarksController < ApplicationController
   def bookmark_params
     params.require(:bookmark).permit(:title, :url)
   end
-
 end
