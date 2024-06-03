@@ -1,7 +1,7 @@
 <div class="py-4">
 
   <div class="flex items-center justify-between">
-    <%= link_to () do %>
+    <%= link_to experience_path(experience) do %>
       <div class="text-wrap font-bold leading-5"><%= experience.name %></div>
     <% end %>
     <div class="ml-6">
@@ -32,7 +32,6 @@
     </div>
   </div>
   <%= link_to () do %>
-    <div class="text-description text-wrap font-light">This is when you think you are ugly a fun little series of spots, that
-      have a unique sellingpoint</div>
+    <div class="text-description text-wrap font-light"><%= experience.description %></div>
   <% end %>
 </div>

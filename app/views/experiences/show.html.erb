@@ -1,0 +1,48 @@
+<div class="flex h-full flex-col justify-between divide-y-2 divide-gray-100">
+  <div class="pb-4">
+    <div class="flex items-center justify-between ">
+      <p class="text-xl font-semibold"><%= @experience.name %></p>
+      <div class="text-description mt-2 flex items-center font-light text-gray-400"><div>user001</div>
+        <div class="size-8 ml-3 rounded-full ring-2 ring-white">
+          <img
+            class="rounded-full"
+            src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+            alt=""
+          >
+        </div>
+      </div>
+    </div>
+    <div class="text-description flex items-center">
+      4.3
+      <div class="ml-1 flex">
+        <!-- star rating -->
+        <% 5.times do %>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="size-3"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8 1.75a.75.75 0 0 1 .692.462l1.41 3.393 3.664.293a.75.75 0 0 1 .428 1.317l-2.791 2.39.853 3.575a.75.75 0 0 1-1.12.814L7.998 12.08l-3.135 1.915a.75.75 0 0 1-1.12-.814l.852-3.574-2.79-2.39a.75.75 0 0 1 .427-1.318l3.663-.293 1.41-3.393A.75.75 0 0 1 8 1.75Z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        <% end %>
+      </div>
+      <p class="text-slate-500">
+        (412)
+      </p>
+      <p class="text-description ml-1 text-teal-400">•
+        <%= @experience.spots.count %>
+        spotz</p>
+    </div>
+  </div>
+  <div class="py-4"><%= @experience.description %></div>
+  <div class="py-4">
+    <% @experience.spots.each do |spot| %>
+      <%= render "shared/card_spot_bookmark", spot: spot %>
+    <% end %>
+  </div>
+</div>
