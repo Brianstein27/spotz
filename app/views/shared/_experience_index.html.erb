@@ -2,7 +2,7 @@
 
   <div class="flex items-center justify-between">
     <%= link_to () do %>
-      <div class="text-wrap font-bold leading-5"><%= @experience.name %></div>
+      <div class="text-wrap font-bold leading-5"><%= @experiences.name %></div>
     <% end %>
     <div class="ml-6">
       <div class="text-description flex items-center font-light text-gray-400"><div>user001</div>
@@ -23,9 +23,9 @@
     "
   >
     <div class="ml-4 flex">
-      <% @experience.each do |experience| %>
+      <% @experiences.spots.each do |spot| %>
         <div class="mr-1 h-14 w-14">
-          <%= cl_image_tag(experience.photos.first.key,class: "h-full w-full",
+          <%= cl_image_tag(spot.photos.first.key,class: "h-full w-full",
           ) %>
         </div>
       <% end %>
