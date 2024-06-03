@@ -2,6 +2,7 @@ require "cloudinary"
 require "open-uri"
 require "uri"
 
+
 Link.destroy_all
 puts "Deleted links!"
 
@@ -11,27 +12,28 @@ puts "Deleted experiences!"
 User.destroy_all
 puts "Deleted users!"
 
+
 Spot.destroy_all
 puts "Deleted spots!"
+
+Category.destroy_all
+puts "Deleted categories!"
 
 Event.destroy_all
 puts "Deleted events!"
 
 
+# ["Food'n'Drinks", "Culture", "Nightlife", "Nature", "Activity", "Hangout", "Playground"]
 
-# Seeding from scraped Data
+foodanddrinks_category = Category.create!(name: "Food'n'Drinks")
+culture_category = Category.create!(name: "Culture")
+nightlife_category = Category.create!(name: "Nightlife")
+nature_category = Category.create!(name: "Nature")
+activity_category = Category.create!(name: "Activity")
+hangout_category = Category.create!(name: "Hangout")
+playground_category = Category.create!(name: "Playground")
 
-# file_path = "events.csv"
 
-# CSV.foreach(file_path, headers: :first_row) do |row|
-
-#   Event.create!(
-#     date: row["Date"],
-#     time: row["Time"],
-#     title: row ["Title"],
-#     address: row["Address"]
-#   )
-# end
 
 spot_images = [
  ["https://res.cloudinary.com/dn7d3hatk/image/upload/v1717075407/Museumsinsel1_y3he0x.jpg",
@@ -64,15 +66,16 @@ spot_images = [
  "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717149618/KINK4_ac5pv2.jpg",
  "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717149624/KINK5_wufori.jpg"],
 
+
 ]
 
 spots = [
-  { name: "Museum Island", address: "Bodestrasse 1-3, 10178 Berlin", category: "Culture", subtitle: "Museum Complex", description: "An island in the Spree river housing five world-renowned museums." },
-  { name: "Oberbaum Bridge", address: "Warschauer Strasse 43, 10243 Berlin", category: "Hangout", subtitle: "Iconic Spot for Sunsets", description: "The perfect spot to talk and philosophise with your friends about anything in a very relaxed and laid-back atmosphere." },
-  { name: "Treptower Park", address: "Am Treptower Park 20, 12435 Berlin", category: "Nature", subtitle: "Treptower Park is a popular public park at the Spree river.", description: "With its unique mix of river landscape, extensive meadows, tranquil areas, gardens, and places to eat and drink, Treptower Park in the district of Treptow-Köpenick is an attractive excursion destination close to the city centre. Thanks to its size, the park offers a lot of space for every form of recreation." },
-  { name: "East Side Gallery", address: "Muehlenstrasse 3-100, 10243 Berlin", category: "Culture", subtitle: "Open-Air Gallery", description: "An international memorial for freedom, it consists of a series of murals painted directly on a remnant of the Berlin Wall." },
-  { name: "Hallmann & Klee", address: "Boehmische Strasse 13, 12055 Berlin", category: "Food'n'Drinks", subtitle: "Fine Dining", description: "You will find the restaurant on the small Boehmischer Platz, whose lively hustle and bustle makes the terrace on the sidewalk a popular spot in summer." },
-  { name: "KINK", address: "Schoenhauser Allee 176, 10119 Berlin", category: "Food'n'Drinks", subtitle: "Fine Dining", description: "The Kink Bar brings together what belongs together: kitchen and bar. In the middle of Berlin, high-end and laid back." },
+  { name: "Museum Island", address: "Bodestrasse 1-3, 10178 Berlin", category: culture_category, subtitle: "Museum Complex", description: "An island in the Spree river housing five world-renowned museums." },
+  { name: "Oberbaum Bridge", address: "Warschauer Strasse 43, 10243 Berlin", category: hangout_category, subtitle: "Iconic Spot for Sunsets", description: "The perfect spot to talk and philosophise with your friends about anything in a very relaxed and laid-back atmosphere." },
+  { name: "Treptower Park", address: "Am Treptower Park 20, 12435 Berlin", category: nature_category, subtitle: "Treptower Park is a popular public park at the Spree river.", description: "With its unique mix of river landscape, extensive meadows, tranquil areas, gardens, and places to eat and drink, Treptower Park in the district of Treptow-Köpenick is an attractive excursion destination close to the city centre. Thanks to its size, the park offers a lot of space for every form of recreation." },
+  { name: "East Side Gallery", address: "Muehlenstrasse 3-100, 10243 Berlin", category: culture_category, subtitle: "Open-Air Gallery", description: "An international memorial for freedom, it consists of a series of murals painted directly on a remnant of the Berlin Wall." },
+  { name: "Hallmann & Klee", address: "Boehmische Strasse 13, 12055 Berlin", category: foodanddrinks_category, subtitle: "Fine Dining", description: "You will find the restaurant on the small Boehmischer Platz, whose lively hustle and bustle makes the terrace on the sidewalk a popular spot in summer." },
+  { name: "KINK", address: "Schoenhauser Allee 176, 10119 Berlin", category: foodanddrinks_category, subtitle: "Fine Dining", description: "The Kink Bar brings together what belongs together: kitchen and bar. In the middle of Berlin, high-end and laid back." },
 ]
 
 spots.each_with_index do |spot, index|
@@ -85,6 +88,8 @@ spots.each_with_index do |spot, index|
 end
 
 puts "Created #{Spot.count} location/s."
+
+
 
 
 events = [

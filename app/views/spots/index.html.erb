@@ -1,11 +1,11 @@
-<div class="relative">
-  <div class="mt-8 flex">
+<div class="mt-8 flex">
     <div class="h-9 w-9 rounded-full bg-teal-400 text-teal-400">.</div>
     <div class="ml-2 text-4xl font-bold">spot<span class="text-teal-400">z</span></div>
   </div>
-  <div class="sticky top-0 z-10 bg-white pb-4 pt-8">
+  <div class="z-10 pb-4 pt-8">
     <%= render "searchbar" %>
 
+  </div>
     <div class="mt-2 flex justify-evenly divide-x-2 divide-slate-200">
       <div
         class="
@@ -21,11 +21,9 @@
       >Map
       </div>
     </div>
-  </div>
 
   <% @spots.each do |spot| %>
     <div class="mb-8 mt-4">
       <%= render "card_spot", spot: spot %>
     </div>
   <% end %>
-</div>
