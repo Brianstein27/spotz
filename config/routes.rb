@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :reviews, only: %i[edit update destroy]
   resources :links, only: %i[new crate]
 
+  get "filter", to: "spots#filter_categories"
+  
   resources :spots, only: %i[index show] do
     get "options", to: "spots#options"
     resources :bookmarks, only: %i[create]
