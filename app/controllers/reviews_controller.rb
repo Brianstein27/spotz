@@ -1,7 +1,15 @@
 class ReviewsController < ApplicationController
   def index
-    @reviews = Review.where
+    @review = Review.where(user: current_user, reviewable: params[:spot_id]).first if params[:spot_id]
+    if params[:spot_id]
+      @spot = Spot.find(params[:spot_id])
+      @reviews = Review.where(reviewable_type: "Spot", reviewable_id: params[:spot_id])
+    else
+      @experience = Experience.find(params[:experience_id])
+      @review = Review.where(reviewable_type: "Experience", reviewable_id: params[:experience_id])
+    end
   end
+
 
   def new
     @review = Review.new
@@ -19,12 +27,13 @@ class ReviewsController < ApplicationController
       @reviewable = Spot.find(params[:spot_id])
       @review.reviewable = @reviewable
       @review.save
-      redirect_to spot_path(@reviewable)
+      # redirect_back(fallback_location: spot_path(@reviewable))
+      redirect_to spot_reviews_path(@reviewable)
     elsif params[:experience_id]
       @reviewable = Experience.find(params[:experience_id])
       @review.reviewable = @reviewable
       @review.save
-      redirect_to experience_path(@reviewable)
+      redirect_back(fallback_location: experience_path(@reviewable))
     end
   end
 
@@ -35,13 +44,8 @@ class ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     @review.update(review_params)
-
     return unless @review.reviewable_type == "Spot"
-
-    redirect_to spot_path(@review.reviewable)
     return unless @review.reviewable_type == "Experience"
-
-    redirect_to experience_path(@review.reviewable)
   end
 
   def destroy
@@ -52,9 +56,9 @@ class ReviewsController < ApplicationController
     @review.delete
 
     if @type == "Spot"
-      redirect_to spot_path(@reviewable)
+      redirect_back(fallback_location: spot_path(@reviewable))
     elsif @type == "Experience"
-      redirect_to experience_path(@reviewable)
+      redirect_back(fallback_location: experience_path(@reviewable))
     end
   end
 
