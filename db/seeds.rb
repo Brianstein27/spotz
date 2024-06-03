@@ -2,6 +2,8 @@ require "cloudinary"
 require "open-uri"
 require "uri"
 
+# Review.destroy_all
+# puts "Deleted reviews!"
 
 Link.destroy_all
 puts "Deleted links!"
@@ -36,18 +38,18 @@ playground_category = Category.create!(name: "Playground")
 
 
 spot_images = [
- ["https://res.cloudinary.com/dn7d3hatk/image/upload/v1717075407/Museumsinsel1_y3he0x.jpg",
- "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717075568/Museumsinsel3_i79fwp.jpg",
- "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717075461/Museumsinsel2_d4aqmt.jpg",
- "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717075573/Museumsinsel4_nfvbxw.jpg"],
+ ["https://res.cloudinary.com/dn7d3hatk/image/upload/v1717424225/Museumsinsel1_bopqcr.jpg",
+ "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717424299/Museumsinsel2_rwmolt.jpg",
+ "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717424341/Museumsinsel3_uirsnd.jpg",
+ "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717424380/Museumsinsel4_emuoag.jpg"],
 
- ["https://res.cloudinary.com/dn7d3hatk/image/upload/v1717076244/Oberbaumbruecke1_dvw65q.jpg",
- "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717076276/Oberbaumbruecke2_ngkiad.jpg",
- "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717076357/Oberbaumbruecke3_dqqtih.jpg",
- "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717076363/Oberbaumbruecke4_wgq4y3.jpg"],
+ ["https://res.cloudinary.com/dn7d3hatk/image/upload/v1717424645/Oberbaumbruecke1_mxuf1b.jpg",
+ "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717424655/Oberbaumbruecke2_apyoju.jpg",
+ "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717424661/Oberbaumbruecke3_pahxga.jpg",
+ "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717424668/Oberbaumbruecke4_r3iwah.jpg"],
 
- ["https://res.cloudinary.com/dn7d3hatk/image/upload/v1717076827/Treptowerpark1_g3g1m9.jpg",
- "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717076831/Treptowerpark2_oibtgx.jpg",
+ ["https://res.cloudinary.com/dn7d3hatk/image/upload/v1717424532/Treptowerpark1_lcsenf.jpg",
+ "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717424538/Treptowerpark2_zfvav7.jpg",
  "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717076836/Treptowerpark3_detxbb.jpg",
  "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717076841/Treptowerpark4_trdfwn.jpg"],
 
