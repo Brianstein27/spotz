@@ -1,0 +1,38 @@
+<div class="py-4">
+
+  <div class="flex items-center justify-between">
+    <%= link_to () do %>
+      <div class="text-wrap font-bold leading-5"><%= @experience.name %></div>
+    <% end %>
+    <div class="ml-6">
+      <div class="text-description flex items-center font-light text-gray-400"><div>user001</div>
+        <div class="ml-3 h-9 w-9 rounded-full ring-2 ring-white">
+          <img
+            class="rounded-full"
+            src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+            alt=""
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="
+      no-scrollbar -mx-4 my-2 inline-flex w-screen snap-x flex-nowrap overflow-x-auto
+    "
+  >
+    <div class="ml-4 flex">
+      <% @experience.each do |experience| %>
+        <div class="mr-1 h-14 w-14">
+          <%= cl_image_tag(experience.photos.first.key,class: "h-full w-full",
+          ) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <%= link_to () do %>
+    <div class="text-description text-wrap font-light">This is when you think you are ugly a fun little series of spots, that
+      have a unique sellingpoint</div>
+  <% end %>
+</div>
