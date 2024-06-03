@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def category_color_class(category)
-    case category
+    case category.name
     when "Food'n'Drinks"
       'bg-customColorFood'
     when 'Culture'

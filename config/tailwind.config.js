@@ -24,7 +24,7 @@ module.exports = {
         customColorFood: "#b09ac8",
         customColorNature: "#b6c8ad",
         customColorCulture: "#e4f1b0",
-        customColorHangout: "#a9cae7",
+        customColorHangout: "#a5cebb",
         customColorNightlife: "#eabcbc"
       }
     },
