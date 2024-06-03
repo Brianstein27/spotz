@@ -44,8 +44,12 @@ class ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     @review.update(review_params)
+
     return unless @review.reviewable_type == "Spot"
+    redirect_to spot_path(@review.reviewable)
+
     return unless @review.reviewable_type == "Experience"
+    redirect_to experience_path(@review.reviewable)
   end
 
   def destroy
