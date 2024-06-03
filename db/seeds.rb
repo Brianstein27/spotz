@@ -2,8 +2,8 @@ require "cloudinary"
 require "open-uri"
 require "uri"
 
-# Review.destroy_all
-# puts "Deleted reviews!"
+Review.destroy_all
+puts "Deleted reviews!"
 
 Link.destroy_all
 puts "Deleted links!"
