@@ -21,7 +21,7 @@
     </div>
   </div>
 
-      <div data-controller="toggle">
+    <div data-controller="toggle">
 
       <div class="mt-4 mb-8 flex justify-evenly space-around text-sm text-gray-600">
         <div>
@@ -45,7 +45,13 @@
         </div>
 
         <div id="experiences" data-toggle-target="experiences" class="hidden">
-
+          <% @bookmarks.each do |bookmark| %>
+            <%= link_to spot_path(bookmark.spot) do %>
+              <div class="mb-8 mt-4">
+                <%= render "shared/card_spot_bookmark", bookmark: bookmark, spot: bookmark.spot %>
+              </div>
+            <% end %>
+          <% end %>
         </div>
 
         <div id="reviews" data-toggle-target="reviews" class="hidden">
@@ -53,4 +59,4 @@
         </div>
       </div>
 
-      </div>
+    </div>
