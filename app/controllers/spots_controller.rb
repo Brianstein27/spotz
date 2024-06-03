@@ -1,5 +1,5 @@
 class SpotsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index show options]
+  skip_before_action :authenticate_user!, only: %i[index show options filter_categories]
   before_action :set_spot, only: %i[show]
 
   def index
@@ -9,6 +9,7 @@ class SpotsController < ApplicationController
     subquery = "name @@ :query OR subtitle @@ :query OR category @@ :query OR description @@ :query OR address @@ :query"
     # if you wanna search through associations, you need to JOIN, see search lecture .4
     @spots = @spots.where(subquery, query: "%#{params[:query]}%")
+
   end
 
   def show
@@ -28,6 +29,10 @@ class SpotsController < ApplicationController
     @bookmark = Bookmark.where(user: current_user, spot: params[:spot_id]).first
     @review = Review.where(user: current_user, reviewable: params[:spot_id]).first if params[:spot_id]
     @review = Review.where(user: current_user, reviewable: params[:experience_id]).first if params[:experience_id]
+  end
+
+  def filter_categories
+    @categories = Category.all
   end
 
   private

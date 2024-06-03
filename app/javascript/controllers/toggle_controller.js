@@ -2,7 +2,8 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="toggle"
 export default class extends Controller {
-  static targets = [ "visits", "experiences", "reviews", "visitsHeader", "experiencesHeader", "reviewsHeader" ];
+
+  static targets = [ "visits", "experiences", "reviews", "visitsHeader", "experiencesHeader", "reviewsHeader", "tags"];
   connect() {
     this.hideAll()
     this.uncolorAll()
@@ -40,5 +41,9 @@ export default class extends Controller {
     this.reviewsHeaderTarget.classList.remove("text-teal-400")
     this.experiencesHeaderTarget.classList.remove("text-teal-400")
 
+  }
+
+  toggle() {
+    this.tagsTarget.classList.toggle("hidden")
   }
 };
