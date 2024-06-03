@@ -5,37 +5,45 @@
   </div>
 </div>
 
-  <div class="block items-center justify-center p-1">
-      <img class="w-40 h-40 rounded-full ring mx-auto" src="https://images.unsplash.com/photo-1586374579358-9d19d632b6df?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="User Avatar">
+  <div class="block items-center justify-center p-1 mt-2">
+      <img class="w-40 h-40 rounded-full mx-auto" src="https://images.unsplash.com/photo-1586374579358-9d19d632b6df?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="User Avatar">
     <div class="flex justify-center">
-      <div class="block m-1">
-        <h2>Jamiroquai</h2>
-        <p class="mt-1">@username</p>
+      <div class="mt-1 text-center">
+        <h2>@Jamiroquai</h2>
       </div>
     </div>
   </div>
 
+      <div data-controller="toggle">
+
       <div class="mt-4 flex justify-evenly space-around text-sm text-gray-600">
-
         <div>
-          <span class=>25 Visits</span>
+          <span data-action="click->toggle#showVisits" class="cursor-pointer">25 Visits</span>
         </div>
         <div> | </div>
         <div>
-          <span class=" text-green-500">12 Experiences</span>
+          <span data-action="click->toggle#showExperiences" class="cursor-pointer">12 Experiences</span>
         </div>
         <div> | </div>
         <div>
-          <span>132 Reviews</span>
+          <span data-action="click->toggle#showReviews" class="cursor-pointer">132 Reviews</span>
         </div>
-
       </div>
 
-  <div class="w-full">
-    <%= render "shared/review" %>
-  </div>
+      <div>
+        <div id="visits" data-toggle-target="visits" class="hidden">
+          <% @visits.each do |visit| %>
+            <%= render "shared/card_spot_bookmark", spot: visit.spot %>
+          <% end %>
+        </div>
 
+        <div id="experiences" data-toggle-target="experiences" class="hidden">
 
-<% @visits.each do |visit| %>
-  <%= render "shared/card_spot_bookmark", spot: visit.spot %>
-<% end %>
+        </div>
+
+        <div id="reviews" data-toggle-target="reviews" class="hidden">
+          <%= render "shared/review" %>
+        </div>
+      </div>
+
+      </div>
