@@ -192,23 +192,25 @@
     </svg>
     <p class="ml-1"><%= @spot.address %></p>
   </div>
-  <%= link_to "https://www.google.de/maps/search/#{@spot.address}" do %>
-    <%= render "shared/button_primary", text: "Get directions" %>
-  <% end %>
+  <div class="my-4">
+    <%= link_to "https://www.google.de/maps/search/#{@spot.address}" do %>
+      <%= render "shared/button_primary", text: "Get directions" %>
+    <% end %>
+  </div>
 </div>
 
 <div class="mt-12">
   <div class="text-xl font-bold">Events near
     <span class="text-teal-400"><%= @spot.name %></span>
   </div>
-  <%= render "shared/event_carousel" %>
+  <%= render "shared/event_carousel", events: @events  %>
 </div>
 
 <div class="my-4">
   <div class="text-xl font-bold">Reviews
-    <span class="text-teal-400">(401)</span>
+    <span class="text-teal-400">(<%= @spot.reviews.count %>)</span>
   </div>
-  <%= render "shared/review_carousel" %>
+  <%= render "shared/review_carousel", reviews: @spot.reviews %>
   <%= render "shared/button_secondary", text: "View all reviews" %>
 </div>
 
@@ -216,8 +218,9 @@
   <span class="text-teal-400">(51)</span>
 </div>
 <div class="divide-y-2 divide-gray-100">
-  <% 3.times do %>
-    <%= render "shared/experience" %>
+
+  <% @experiences.each do |experience| %>
+    <%= render "shared/experience", experience: experience %>
   <% end %>
 </div>
 <div class="mb-4">

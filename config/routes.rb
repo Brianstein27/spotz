@@ -5,16 +5,17 @@ Rails.application.routes.draw do
   get "pages/profile", to: "pages#profile"
 
   resources :bookmarks, only: %i[index destroy]
+  resources :visits, only: %i[destroy]
+  resources :reviews, only: %i[edit update destroy]
   resources :links, only: %i[new crate]
 
+  get "filter", to: "spots#filter_categories"
+  
   resources :spots, only: %i[index show] do
-    get "create_visit", to: "spots#create_visit"
-    get "delete_visit", to: "spots#delete_visit"
-    get "create_bookmark", to: "spots#create_bookmark"
-    get "delete_bookmark", to: "spots#delete_bookmark"
     get "options", to: "spots#options"
-    # resources :bookmarks, only: %i[create]
-    resources :reviews, only: %i[new create index edit update destroy]
+    resources :bookmarks, only: %i[create]
+    resources :visits, only: %i[create]
+    resources :reviews, only: %i[new create index]
     resources :links, only: %i[new create destroy]
   end
 

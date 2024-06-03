@@ -1,5 +1,5 @@
 class SpotsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index show options]
+  skip_before_action :authenticate_user!, only: %i[index show options filter_categories]
   before_action :set_spot, only: %i[show]
 
   def index
@@ -9,6 +9,7 @@ class SpotsController < ApplicationController
     subquery = "name @@ :query OR subtitle @@ :query OR category @@ :query OR description @@ :query OR address @@ :query"
     # if you wanna search through associations, you need to JOIN, see search lecture .4
     @spots = @spots.where(subquery, query: "%#{params[:query]}%")
+
   end
 
   def show
@@ -19,45 +20,19 @@ class SpotsController < ApplicationController
         marker_html: render_to_string(partial: "marker")
       }]
     @bookmark = Bookmark.where(user: current_user, spot: @spot).first
+    @events = Event.all
+    @experiences = Experience.all
   end
 
   def options
     @visit = Visit.where(user: current_user, spot: params[:spot_id]).first
     @bookmark = Bookmark.where(user: current_user, spot: params[:spot_id]).first
+    @review = Review.where(user: current_user, reviewable: params[:spot_id]).first if params[:spot_id]
+    @review = Review.where(user: current_user, reviewable: params[:experience_id]).first if params[:experience_id]
   end
 
-  def create_visit
-    @visit = Visit.new
-    @spot = Spot.find(params[:spot_id])
-    @visit.user = current_user
-    @visit.spot = @spot
-
-    redirect_to @spot, notice: "spot was added to visited" if @visit.save
-  end
-
-  def delete_visit
-    @spot = Spot.find(params[:spot_id])
-    @visit = Visit.where(user: current_user, spot: @spot).first
-    @visit.delete
-
-    redirect_to @spot, notice: "spot was removed from visited list"
-  end
-
-  def create_bookmark
-    @bookmark = Bookmark.new
-    @spot = Spot.find(params[:spot_id]) if params[:spot_id]
-    @bookmark.user = current_user
-    @bookmark.spot = @spot
-
-    redirect_to @spot, notice: "spot was added to bookmarks" if @bookmark.save
-  end
-
-  def delete_bookmark
-    @spot = Spot.find(params[:spot_id])
-    @bookmark = Bookmark.where(user: current_user, spot: @spot).first
-    @bookmark.delete
-
-    redirect_to @spot, notice: "spot was removed from bookmarks"
+  def filter_categories
+    @categories = Category.all
   end
 
   private
