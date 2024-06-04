@@ -1,15 +1,15 @@
+    <% @experiences.each do |experience| %>
 <div class="py-4">
 
+  <%= link_to "#" do %>
   <div class="flex items-center justify-between">
-    <%= link_to experience_path(experience) do %>
       <div class="text-wrap font-bold leading-5"><%= experience.name %></div>
-    <% end %>
     <div class="ml-6">
-      <div class="text-description flex items-center font-light text-gray-400"><div>emmvs</div>
+      <div class="text-description flex items-center font-light text-gray-400"><div><%= experience.user.username %></div>
         <div class="ml-3 h-9 w-9 rounded-full ring-2 ring-white">
           <img
             class="rounded-full"
-            src="https://avatars.githubusercontent.com/u/90188399?v=4"
+            src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
             alt=""
           >
         </div>
@@ -23,15 +23,14 @@
     "
   >
     <div class="ml-4 flex">
-      <% experience.spots.each do |spot| %>
         <div class="mr-1 h-14 w-14">
-          <%= cl_image_tag(spot.photos.first.key,class: "h-full w-full",
-          ) %>
+      <% experience.spots.each do |spot| %>
+          <%= cl_image_tag(spot.photos.first.key)  %>
+<% end %>
         </div>
-      <% end %>
     </div>
   </div>
-  <%= link_to () do %>
     <div class="text-description text-wrap font-light"><%= experience.description %></div>
+  <% end %>
   <% end %>
 </div>
