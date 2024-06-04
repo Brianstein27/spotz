@@ -13,5 +13,7 @@ class PagesController < ApplicationController
     @reviews = Review.where(user: current_user)
   end
 
-
+  def settings
+    
+  end
 end

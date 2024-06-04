@@ -4,13 +4,15 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get "pages/profile", to: "pages#profile"
 
+  get "pages/settings", to: "pages#settings"
+
   resources :bookmarks, only: %i[index destroy]
   resources :visits, only: %i[destroy]
   resources :reviews, only: %i[edit update destroy]
   resources :links, only: %i[new crate]
 
   get "filter", to: "spots#filter_categories"
-  
+
   resources :spots, only: %i[index show] do
     get "options", to: "spots#options"
     resources :bookmarks, only: %i[create]
