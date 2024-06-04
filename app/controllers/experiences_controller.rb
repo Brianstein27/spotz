@@ -4,9 +4,9 @@ class ExperiencesController < ApplicationController
 
   def index
     if params[:query].present?
-      @experience = Experience.where(params[:query])
+      @experiences = Experience.where(params[:query])
     else
-      @experience = Experience.all
+      @experiences = Experience.all
     end
   end
 

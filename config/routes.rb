@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get "pages/profile", to: "pages#profile"
 
+  get "pages/settings", to: "pages#settings"
+
   resources :bookmarks, only: %i[index destroy]
   resources :visits, only: %i[destroy]
   resources :reviews, only: %i[edit update destroy]
@@ -19,6 +21,7 @@ Rails.application.routes.draw do
     resources :links, only: %i[new create]
   end
 
+<<<<<<< HEAD
   resources :experiences, only: %i[index show new create edit destroy] do
     resources :reviews, only: %i[new create index]
     resources :links, only: %i[new create]

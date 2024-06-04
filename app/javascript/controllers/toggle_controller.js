@@ -6,8 +6,7 @@ export default class extends Controller {
   static targets = [ "visits", "experiences", "reviews", "visitsHeader", "experiencesHeader", "reviewsHeader", "tags"];
   connect() {
     console.log("connected");
-    this.hideAll()
-    this.uncolorAll()
+    this.showExperiences()
   }
 
   showVisits() {
