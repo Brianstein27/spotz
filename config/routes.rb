@@ -7,20 +7,20 @@ Rails.application.routes.draw do
   resources :bookmarks, only: %i[index destroy]
   resources :visits, only: %i[destroy]
   resources :reviews, only: %i[edit update destroy]
-  resources :links, only: %i[new crate]
+  resources :links, only: %i[new create destroy]
 
   get "filter", to: "spots#filter_categories"
-  
+
   resources :spots, only: %i[index show] do
     get "options", to: "spots#options"
     resources :bookmarks, only: %i[create]
     resources :visits, only: %i[create]
     resources :reviews, only: %i[new create index]
-    resources :links, only: %i[new create destroy]
+    resources :links, only: %i[new create]
   end
 
   resources :experiences, only: %i[index show] do
     resources :reviews, only: %i[new create index]
-    resources :links, only: %i[index create show]
+    resources :links, only: %i[new create]
   end
 end
