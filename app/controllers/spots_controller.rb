@@ -14,11 +14,18 @@ class SpotsController < ApplicationController
     else
       @spots = Spot.all
     end
-
+    
+    @markers = @spots.geocoded.map do |spot|
+      {
+        latitude: spot.latitude,
+        longitude: spot.longitude,
+        marker_html: render_to_string(partial: "marker")
+      }
+    end
   end
 
   def show
-    @markers =
+    @marker =
       [{
         latitude: @spot.latitude,
         longitude: @spot.longitude,
