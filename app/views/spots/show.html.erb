@@ -1,6 +1,6 @@
 <div data-controller="swiper" class="relative">
   <!-- back button -->
-  <%= link_to spots_path, class: "absolute top-10 z-50  flex" do %>
+  <%= link_to :back, class: "absolute top-10 z-50  flex" do %>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 16 16"
@@ -215,7 +215,9 @@
     <span class="text-teal-400">(<%= @spot.reviews.count %>)</span>
   </div>
   <%= render "shared/review_carousel", reviews: @spot.reviews %>
-  <%= render "shared/button_secondary", text: "View all reviews" %>
+    <%= link_to spot_reviews_path(@spot) do %>
+      <%= render "shared/button_secondary", text: "View all reviews" %>
+    <% end %>
 </div>
 
 <div class="mt-12 text-xl font-bold">Experiences
@@ -228,5 +230,7 @@
   <% end %>
 </div>
 <div class="mb-4">
-  <%= render "shared/button_secondary", text: "View all experiences" %>
+  <%= link_to experiences_path do %>
+      <%= render "shared/button_secondary", text: "View all experiences" %>
+    <% end %>
 </div>
