@@ -1,11 +1,11 @@
+    <% @experiences.each do |experience| %>
 <div class="py-4">
 
+  <%= link_to "#" do %>
   <div class="flex items-center justify-between">
-    <%= link_to () do %>
-      <div class="text-wrap font-bold leading-5"><%= @experiences.name %></div>
-    <% end %>
+      <div class="text-wrap font-bold leading-5"><%= experience.name %></div>
     <div class="ml-6">
-      <div class="text-description flex items-center font-light text-gray-400"><div>user001</div>
+      <div class="text-description flex items-center font-light text-gray-400"><div><%= experience.user.username %></div>
         <div class="ml-3 h-9 w-9 rounded-full ring-2 ring-white">
           <img
             class="rounded-full"
@@ -23,16 +23,14 @@
     "
   >
     <div class="ml-4 flex">
-      <% @experiences.spots.each do |spot| %>
         <div class="mr-1 h-14 w-14">
-          <%= cl_image_tag(spot.photos.first.key,class: "h-full w-full",
-          ) %>
+      <% experience.spots.each do |spot| %>
+          <%= cl_image_tag(spot.photos.first.key)  %>
+<% end %>
         </div>
-      <% end %>
     </div>
   </div>
-  <%= link_to () do %>
-    <div class="text-description text-wrap font-light">This is when you think you are ugly a fun little series of spots, that
-      have a unique sellingpoint</div>
+    <div class="text-description text-wrap font-light"><%= experience.description %></div>
+  <% end %>
   <% end %>
 </div>

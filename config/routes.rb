@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :links, only: %i[new create destroy]
   end
 
-  resources :experiences, only: %i[index show] do
+  resources :experiences, only: %i[index show new create] do
     resources :reviews, only: %i[new create index edit update destroy]
     resources :links, only: %i[index create show]
   end
