@@ -1,31 +1,32 @@
-<div class="relative">
-  <div class="mt-8 flex">
+<div class="mt-8 flex">
     <div class="h-9 w-9 rounded-full bg-teal-400 text-teal-400">.</div>
     <div class="ml-2 text-4xl font-bold">spot<span class="text-teal-400">z</span></div>
   </div>
-  <div class="sticky top-0 z-10 bg-white pb-4 pt-8">
-    <%= render "searchbar" %>
 
-    <div class="mt-2 flex justify-evenly divide-x-2 divide-slate-200">
-      <div
-        class="
-          mb-2 w-full border-b-2 border-teal-300 pb-2 text-center text-xl font-semibold
-          text-teal-400
-        "
-      >List</div>
-      <div
-        class="
-          mb-2 w-full border-b-2 border-slate-200 pb-2 text-center text-xl font-light
-          text-slate-400
-        "
-      >Map
+  <div data-controller="item-toggle">
+
+    <div class="sticky top-0 z-10 bg-white pb-4 pt-8">
+      <%= render "searchbar" %>
+      <div class="mt-2 flex justify-evenly divide-x-2 divide-slate-200">
+        <div class="mb-2 w-full border-slate-200 pb-2 text-center text-xl font-light text-slate-400 cursor-pointer" data-action="click->item-toggle#showItem1" data-item-toggle-target="item1Header">
+          List
+        </div>
+        <div class="mb-2 w-full border-slate-200 pb-2 text-center text-xl font-light text-slate-400 cursor-pointer" data-action="click->item-toggle#showItem2" data-item-toggle-target="item2Header">
+          Map
+        </div>
+      </div>
+    </div>
+    <div>
+      <div id="item1" data-item-toggle-target="item1" class="hidden">
+        <% @spots.each do |spot| %>
+          <div class="mb-8 mt-4">
+            <%= render "card_spot", spot: spot %>
+          </div>
+        <% end %>
+      </div>
+      <div id="item2" data-item-toggle-target="item2" class="hidden">
+        <h1>There will be a MAP here, promise!</h1>
       </div>
     </div>
   </div>
-
-  <% @spots.each do |spot| %>
-    <div class="mb-8 mt-4">
-      <%= render "card_spot", spot: spot %>
-    </div>
-  <% end %>
 </div>

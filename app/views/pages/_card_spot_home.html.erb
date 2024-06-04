@@ -9,11 +9,11 @@
       "
     >
       <p
-        class="
-          text-description rounded-full bg-neutral-400 px-4 py-1 font-semibold text-white
+        class=" <%= category_color_class(spot.category) %>
+          text-description rounded-full px-4 py-1 font-semibold text-white
           shadow-lg
         "
-      ><%= spot.category %></p>
+      ><%= spot.category.name %></p>
 
       <div>
         <% bookmark = Bookmark.where(user: current_user, spot: spot).first %>
@@ -67,7 +67,7 @@
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
-          fill="currentColor"
+          fill="#2DD4BF"
           class="ml-2 h-4 w-4 pb-px"
         >
           <path

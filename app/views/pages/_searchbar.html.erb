@@ -19,7 +19,7 @@
         class="ml-4 h-10 grow flex-col"
       ><div class="font-semibold leading-5">Find spotz</div><div class="text-description font-light leading-4">Explore like a local</div></div></div><div class="flex items-center">
       <div data-searchbar-target="input" class="hidden grow">
-        <%= form_with url: spots_path, method: :get, class: "h-10 search-bar flex items-center" do %>
+        <%= form_with url: spots_path, method: :get, class: "h-10 search-bar w-64 flex items-center" do %>
           <%= text_field_tag :address,
           params[:address],
           class: "search-input border-white focus:ring-white focus:border-white text-xl",

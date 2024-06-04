@@ -36,7 +36,7 @@
         "
       >
         <div>
-          <%= form_with model: [@reviewable, @review] do |f| %>
+          <%= form_with model: [@reviewable, @review], data: {turbo_frame: "_top"} do |f| %>
             <div class="flex w-full justify-between">
               <%= link_to spot_path(params[:spot_id]) do %>
                 Cancel
