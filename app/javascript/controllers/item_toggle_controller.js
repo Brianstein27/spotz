@@ -5,8 +5,7 @@ export default class extends Controller {
   static targets = ["item1", "item2", "item1Header", "item2Header"];
   connect() {
     console.log("connected");
-    this.hideAll()
-    this.uncolorAll()
+    this.showItem1()
   }
 
   showItem1() {
