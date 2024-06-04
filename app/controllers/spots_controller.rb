@@ -3,12 +3,17 @@ class SpotsController < ApplicationController
   before_action :set_spot, only: %i[show]
 
   def index
-    @spots = Spot.all
-    return unless params[:query].present?
-
-    subquery = "name @@ :query OR subtitle @@ :query OR category @@ :query OR description @@ :query OR address @@ :query"
-    # if you wanna search through associations, you need to JOIN, see search lecture .4
-    @spots = @spots.where(subquery, query: "%#{params[:query]}%")
+    if params[:query].present?
+      if params[:category_ids].present?
+      @spots = Spot.global_search(params[:query]).where(category_id: params[:category_ids])
+      else
+      @spots = Spot.global_search(params[:query])
+      end
+    elsif params[:category_ids].present?
+      @spots = Spot.global_search(params[:category_ids])
+    else
+      @spots = Spot.all
+    end
 
   end
 
