@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   end
 
   resources :experiences, only: %i[index show] do
-    resources :reviews, only: %i[new create index edit update destroy]
+    resources :reviews, only: %i[new create index]
     resources :links, only: %i[index create show]
   end
 end
