@@ -25,7 +25,8 @@ module.exports = {
         customColorNature: "#b6c8ad",
         customColorCulture: "#e4f1b0",
         customColorHangout: "#a5cebb",
-        customColorNightlife: "#eabcbc"
+        customColorNightlife: "#eabcbc",
+        customColorActivity: "#9db7c5"
       }
     },
   },
