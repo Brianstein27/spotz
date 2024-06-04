@@ -9,7 +9,6 @@ class SpotsController < ApplicationController
     subquery = "name @@ :query OR subtitle @@ :query OR category @@ :query OR description @@ :query OR address @@ :query"
     # if you wanna search through associations, you need to JOIN, see search lecture .4
     @spots = @spots.where(subquery, query: "%#{params[:query]}%")
-
   end
 
   def show
@@ -21,7 +20,8 @@ class SpotsController < ApplicationController
       }]
     @bookmark = Bookmark.where(user: current_user, spot: @spot).first
     @events = Event.all
-    @experiences = Experience.all
+    links = Link.where(spot: @spot)
+    @experiences = links.map(&:experience)
   end
 
   def options

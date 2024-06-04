@@ -1,6 +1,4 @@
 class BookmarksController < ApplicationController
-  before_action :authenticate_user!, only: %i[create destroy]
-
   def index
     @bookmarks = Bookmark.where(user: current_user)
   end
