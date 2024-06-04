@@ -1,20 +1,16 @@
 <div class="my-7 text-2xl font-bold">
-<h1>Create a new experience</h1>
+  <h1>Create a new experience</h1>
 </div>
 <div class="my-7 text-xl font-bold">
   <%= simple_form_for(@experience) do |f| %>
   <div class="my-4">
-  <label for="experience_name">name</label>
+    <%= f.input :name, placeholder: 'name', label:false, input_html: { class: 'rounded-lg w-full border-slate-300' } %>
   </div>
-    <%= f.input :name, placeholder: 'Cool hangout in the city.', label:false, input_html: { class: 'rounded-lg w-full' } %>
+  <div class="my-4">
+    <%= f.input :description, placeholder: "description", label:false, input_html: { class: 'rounded-lg w-full border-slate-300' }%>
+  </div>
     <div class="my-4">
-    <label for="experience_description">description</label>
-    </div>
-    <%= f.input :description, placeholder: "this experience is awesome because...", label:false, input_html: { class: 'rounded-lg w-full' }%>
+    <%= f.submit 'create experience', class: 'btn btn-flat w-full h-11 flex items-center justify-center rounded-xl border-teal-400 bg-teal-400 font-bold text-white cursor-pointer' %>
+  </div>
+  <% end %>
 </div>
-<div>
-<%= render "spots/searchbar" %>
-</div>
-    <%= f.submit class: 'btn btn-flat w-full' %>
-     <%= render 'shared/button_primary', f: f %>
-    <% end %>
