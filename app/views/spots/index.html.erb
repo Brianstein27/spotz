@@ -24,8 +24,19 @@
           </div>
         <% end %>
       </div>
-      <div id="item2" data-item-toggle-target="item2" class="hidden">
-        <h1>There will be a MAP here, promise!</h1>
+  <div id="item2" data-item-toggle-target="item2" class="hidden">
+
+    <div
+    class="
+      mb-4 mt-8 flex h-60 w-full flex-col justify-center rounded-xl border border-b
+      border-slate-200
+      "
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+    >
+    </div>
+     </div>
       </div>
     </div>
   </div>

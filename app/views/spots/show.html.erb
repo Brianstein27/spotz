@@ -169,6 +169,7 @@
   <!-- Description -->
   <p class="border-b border-slate-200 py-4 text-slate-700"><%= @spot.description %></p>
 </div>
+
 <!-- Map Section -->
 <div class="border-b border-slate-200 pb-4">
   <div
@@ -177,7 +178,7 @@
       border-slate-200
     "
     data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-markers-value="<%= @marker.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
   >
   </div>

@@ -12,13 +12,17 @@ export default class extends Controller {
     mapboxgl.accessToken = this.apiKeyValue
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/mapbox/streets-v10",
+      style: "mapbox://styles/mapbox/light-v11",
       center: [this.markersValue[0].longitude, this.markersValue[0].latitude],
       zoom: 14,
     })
     this.map.addControl(new mapboxgl.NavigationControl());
     this.#addMarkersToMap()
+    if (this.markersValue.length > 1) {
+      this.#fitMapToMarkers()
+    }
   }
+
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
       const el = document.createElement('div');
@@ -32,5 +36,17 @@ export default class extends Controller {
         .setLngLat([ marker.longitude, marker.latitude ])
         .addTo(this.map)
     })
+  }
+
+  #fitMapToMarkers() {
+    const bounds = new mapboxgl.LngLatBounds();
+
+    this.markersValue.forEach(marker => {
+      bounds.extend([marker.longitude, marker.latitude]);
+    });
+
+    this.map.fitBounds(bounds, {
+      padding: 20
+    });
   }
 }
