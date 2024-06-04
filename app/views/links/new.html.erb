@@ -1,4 +1,17 @@
-<div>
-  <h1 class="font-bold text-4xl">Links#new</h1>
-  <p>Find me in app/views/links/new.html.erb</p>
+<div class="my-4 flex justify-center">
+  <p class="text-lg font-bold">
+    Add a spot
+  </p>
 </div>
+<%= simple_form_for [@experience, @link] do |f| %>
+  <%= f.input :spot,
+          collection: @spots,
+          label: false,
+          input_html: {
+            class:
+              "border-slate-300 shadow-md pl-4 mb-6 focus:border-none focus:ring-2 focus:ring-teal-400 rounded-xl w-full",
+          } %>
+  <%= button_tag(type: 'submit', class: "w-full") do %>
+    <%= render "shared/button_primary", text: "Add to experience" %>
+  <% end %>
+<% end %>

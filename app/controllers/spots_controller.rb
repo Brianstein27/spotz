@@ -33,7 +33,8 @@ class SpotsController < ApplicationController
       }]
     @bookmark = Bookmark.where(user: current_user, spot: @spot).first
     @events = Event.all
-    @experiences = Experience.all
+    links = Link.where(spot: @spot)
+    @experiences = links.map(&:experience)
   end
 
   def options
