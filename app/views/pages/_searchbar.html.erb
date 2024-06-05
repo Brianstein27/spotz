@@ -1,7 +1,10 @@
 <div
   data-controller="searchbar"
   class="my-8 rounded-full border border-gray-300 px-6 py-3"
-><div class="flex items-center justify-between"><div class="flex grow-0 items-center"><svg
+  >
+  <div class="flex items-center w-full relative">
+    <div class="flex grow-0 items-center">
+      <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         fill="currentColor"
@@ -17,14 +20,20 @@
         data-searchbar-target="text"
         data-action="click->searchbar#show"
         class="ml-4 h-10 grow flex-col"
-      ><div class="font-semibold leading-5">Find spotz</div><div class="text-description font-light leading-4">Explore like a local</div></div></div><div class="flex items-center">
+        >
+        <div class="font-semibold leading-5">Find spotz</div>
+        <div class="text-description font-light leading-4">Explore like a local</div>
+      </div>
+    </div>
+    <div class="flex items-center">
       <div data-searchbar-target="input" class="hidden grow">
         <%= form_with url: spots_path, method: :get, class: "h-10 search-bar w-64 flex items-center" do %>
           <%= text_field_tag :query, params[:query],
           class: "search-input border-white focus:ring-white focus:border-white text-xl",
           placeholder: "" %>
           <%= submit_tag "", class: "search-div fa-solid" %>
-        <% end %></div>
+        <% end %>
+      </div>
       <%= link_to () do %>
         <svg data-action="click->toggle#toggle"
           xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +41,7 @@
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          class="size-7"
+          class="size-7 absolute right-0 top-1"
         >
           <path
             stroke-linecap="round"
