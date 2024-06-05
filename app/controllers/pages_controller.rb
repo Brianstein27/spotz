@@ -17,7 +17,7 @@ class PagesController < ApplicationController
 
   def profile
     @visits = Visit.where(user: current_user)
-    @bookmarks = Bookmark.where(user: current_user)
+    @experiences = Experience.where(user: current_user)
     @reviews = Review.where(user: current_user)
   end
 
