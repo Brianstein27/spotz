@@ -10,7 +10,7 @@ class SpotsController < ApplicationController
         @spots = Spot.global_search(params[:query])
       end
     elsif params[:category_ids].present?
-      @spots = Spot.global_search(params[:category_ids])
+      @spots = Spot.where(category_id: params[:category_ids])
     else
       @spots = Spot.all
     end
@@ -19,7 +19,8 @@ class SpotsController < ApplicationController
       {
         latitude: spot.latitude,
         longitude: spot.longitude,
-        marker_html: render_to_string(partial: "marker")
+        marker_html: render_to_string(partial: "marker"),
+        name: spot.name
       }
     end
   end
@@ -29,7 +30,8 @@ class SpotsController < ApplicationController
       [{
         latitude: @spot.latitude,
         longitude: @spot.longitude,
-        marker_html: render_to_string(partial: "marker")
+        marker_html: render_to_string(partial: "marker"),
+        name: @spot.name
       }]
     @bookmarks = Bookmark.where(spot: @spot)
     @visits = Visit.where(spot: @spot)
@@ -39,7 +41,7 @@ class SpotsController < ApplicationController
     @average_rating = average_rating
 
     @distance = @spot.distance_to([52.51,13.39])
-    @short_distance = @distance.round(2) 
+    @short_distance = @distance.round(2)
   end
 
   def options
