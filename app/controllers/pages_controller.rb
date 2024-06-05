@@ -14,6 +14,6 @@ class PagesController < ApplicationController
   end
 
   def settings
-    
+
   end
 end

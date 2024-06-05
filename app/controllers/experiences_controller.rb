@@ -18,6 +18,16 @@ class ExperiencesController < ApplicationController
     @experience = Experience.new
   end
 
+  def create
+    @experience = Experience.new(experience_params)
+    @experience.user = current_user
+    if @experience.save
+      redirect_to @experience, notice: 'Experience was successfully created.'
+    else
+      render :new
+    end
+  end
+
   def destroy
     @experience.destroy
     redirect_to experiences_path

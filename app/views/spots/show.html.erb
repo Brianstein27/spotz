@@ -1,6 +1,6 @@
 <div data-controller="swiper" class="relative">
   <!-- back button -->
-  <%= link_to spots_path, class: "absolute top-10 z-50  flex" do %>
+  <%= link_to :back, class: "absolute top-10 z-50  flex" do %>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 16 16"
@@ -121,7 +121,8 @@
         <!-- amount of reviews -->
         <div class="ml-1">(<%= @spot.reviews.count %>)</div>
         <div class="ml-1 text-teal-400">
-          • 3.5km away</div>
+          <%= [0.3,0.5,0.8,0.2].sample %> <%= " • km away" %>
+          </div>
       </div>
     </div>
     <!-- bookmark -->
@@ -222,9 +223,15 @@
     <span class="text-teal-400">(<%= @spot.reviews.count %>)</span>
   </div>
   <%= render "shared/review_carousel", reviews: @spot.reviews %>
+<<<<<<< HEAD
   <%= link_to spot_reviews_path(@spot) do %>
     <%= render "shared/button_secondary", text: "View all reviews" %>
   <% end %>
+=======
+    <%= link_to spot_reviews_path(@spot) do %>
+      <%= render "shared/button_secondary", text: "View all reviews" %>
+    <% end %>
+>>>>>>> 9a623ae8e7ee1a0bd81fa4aecd6f46f0cc9412d6
 </div>
 
 <div class="mt-12 text-xl font-bold">Experiences
@@ -237,7 +244,13 @@
   <% end %>
 </div>
 <div class="mb-4">
+<<<<<<< HEAD
   <%= link_to spot_experiences_path(@spot) do %>
     <%= render "shared/button_secondary", text: "View all experiences" %>
   <% end %>
+=======
+  <%= link_to experiences_path do %>
+      <%= render "shared/button_secondary", text: "View all experiences" %>
+    <% end %>
+>>>>>>> 9a623ae8e7ee1a0bd81fa4aecd6f46f0cc9412d6
 </div>
