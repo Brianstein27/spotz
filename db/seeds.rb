@@ -14,7 +14,6 @@ puts "Deleted experiences!"
 User.destroy_all
 puts "Deleted users!"
 
-
 Spot.destroy_all
 puts "Deleted spots!"
 
@@ -126,9 +125,9 @@ puts "Created #{Spot.count} spotz!"
 
 
 events = [
-  { title: "Drumming Lessons with Brian", address: "Rudi-Dutschke-Str. 26, 10969 Berlin", date: "2024-06-07" , time: "09:00:00 pm", image_url: "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717502867/DR_mszwgj.png" },
-  { title: "Ruby on Rails: From Confused to Confused with Luise", address: "Rudi-Dutschke-Str. 26, 10969 Berlin", date: "2024-08-08" , time: "01:00:00 pm", image_url: "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717497391/Luise_ckypml.png" },
-  { title: "Precious lessons on scamming!", address: "Platz d. Republik 1, 10557 Berlin", date: "2024-06-09" , time: "11:00:00 am", image_url: "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717504569/SCAM_wgonj4.jpg" },
+  { title: "Drum Lessons", address: "Rudi-Dutschke-Str. 26, 10969 Berlin", date: "2024-06-07" , time: "09:00:00 pm", image_url: "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717502867/DR_mszwgj.png" },
+  { title: "Rails: From Confused to Confused", address: "Rudi-Dutschke-Str. 26, 10969 Berlin", date: "2024-08-08" , time: "01:00:00 pm", image_url: "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717497391/Luise_ckypml.png" },
+  { title: "Nigerian Prince Tutorials", address: "Platz d. Republik 1, 10557 Berlin", date: "2024-06-09" , time: "11:00:00 am", image_url: "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717596446/nigerian_prince_rcvrmk.jpg" },
   { title: "Camel & Code", address: "Prinzenstraße 113-119, 10969 Berlin", date: "2024-06-10" , time: "10:00:00 am", image_url: "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717498581/CC_f0pfho.png" },
   { title: "Beers & Axes", address: "Karl-Liebknecht-Str. 9, 10178 Berlin", date: "2024-06-08" , time: "07:00:00 pm", image_url: "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717497234/Beer_wzqken.png" },
   # { title: "Vegan Sundays", address: "Kiehnwerderallee 2, 12437 Berlin", date: "2024-06-09" , time: "10:00:00 am", image_url: "https://res.cloudinary.com/dn7d3hatk/image/upload/v1717159363/vegan_l3cxgb.jpg" },
@@ -152,7 +151,7 @@ user_avatars = [
 ]
 
 users =  [
-  { email: "emma@lewagon.com", password: "123456", username: "emmavs" },
+  { email: "emma@lewagon.com", password: "123456", username: "emmvs" },
   { email: "precious@precious.com", password: "123456", username: "precious" },
 ]
 
