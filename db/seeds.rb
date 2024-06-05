@@ -176,9 +176,20 @@ puts "Experience created! #{Experience.name}"
 puts "Created #{Experience.count} experiences!"
 
 links = [
+<<<<<<< Updated upstream
   { spot_id: Spot.all.sample.id, experience_id: Experience.all.sample.id },
   { spot_id: Spot.all.sample.id, experience_id: Experience.all.sample.id },
 
+=======
+  { spot_id: Spot.all.first.id, experience_id: Experience.all.first.id },
+  { spot_id: Spot.all.second.id, experience_id: Experience.all.first.id },
+  { spot_id: Spot.all.third.id, experience_id: Experience.all.first.id },
+  { spot_id: Spot.all.fourth.id, experience_id: Experience.all.first.id },
+  { spot_id: Spot.all.fifth.id, experience_id: Experience.all.second.id },
+
+
+  { spot_id: Spot.all.last.id, experience_id: Experience.all.second.id },
+>>>>>>> Stashed changes
 ]
 
 Link.create!(links)
