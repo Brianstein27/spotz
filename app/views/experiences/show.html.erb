@@ -70,7 +70,11 @@
       <% end %>
     </div>
     <div class="text-description mt-1 flex items-center">
-      <%= @average_rating %>
+      <% if @average_rating.nan? %>
+        0
+      <% else %>
+        <%= @average_rating %>
+      <% end %>
       <div class="ml-1 flex">
         <!-- star rating -->
         <% 5.times do %>
@@ -100,7 +104,7 @@
           <%= @experience.user.username %></div>
         <div class="size-6 ml-1 mr-3 rounded-full ring-2 ring-white">
           <%= cl_image_tag @experience.user.photo.key,
-          class: "rounded-full ring-2 ring-white" %>
+          class: "rounded-full size-6 ring-2 ring-white" %>
         </div>
       </div>
       <div>
