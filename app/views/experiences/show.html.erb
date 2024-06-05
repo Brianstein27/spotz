@@ -1,7 +1,7 @@
 <div class="flex h-full flex-col justify-between divide-y-2 divide-gray-100">
   <div class="pb-4">
     <div class="flex items-start justify-between">
-      <p class="text-xl font-semibold w-2/3"><%= @experience.name %></p>
+      <p class="w-2/3 text-xl font-semibold"><%= @experience.name %></p>
       <% if @experience.user == current_user %>
         <div class="flex items-start" data-controller="experience">
           <svg
@@ -70,7 +70,11 @@
       <% end %>
     </div>
     <div class="text-description mt-1 flex items-center">
-      4.3
+      <% if @average_rating.nan? %>
+        0
+      <% else %>
+        <%= @average_rating %>
+      <% end %>
       <div class="ml-1 flex">
         <!-- star rating -->
         <% 5.times do %>
@@ -100,7 +104,7 @@
           <%= @experience.user.username %></div>
         <div class="size-6 ml-1 mr-3 rounded-full ring-2 ring-white">
           <%= cl_image_tag @experience.user.photo.key,
-          class: "rounded-full ring-2 ring-white" %>
+          class: "rounded-full size-6 ring-2 ring-white" %>
         </div>
       </div>
       <div>

@@ -12,6 +12,7 @@ class ExperiencesController < ApplicationController
   end
 
   def show
+    @average_rating = average_rating
   end
 
   def new
@@ -53,5 +54,11 @@ class ExperiencesController < ApplicationController
 
   def experience_params
     params.require(:experience).permit(:name, :description)
+  end
+
+  def average_rating
+    rating = 0
+    @experience.reviews.each { |review| rating += review.rating }
+    rating = rating.to_f / @experience.reviews.count
   end
 end
