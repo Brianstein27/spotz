@@ -58,6 +58,7 @@ class SpotsController < ApplicationController
   def average_rating
     rating = 0
     @spot.reviews.each { |review| rating += review.rating }
+    rating = rating.to_f / @spot.reviews.count
   end
 
   def set_spot

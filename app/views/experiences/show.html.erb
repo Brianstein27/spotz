@@ -1,7 +1,7 @@
 <div class="flex h-full flex-col justify-between divide-y-2 divide-gray-100">
   <div class="pb-4">
     <div class="flex items-start justify-between">
-      <p class="text-xl font-semibold w-2/3"><%= @experience.name %></p>
+      <p class="w-2/3 text-xl font-semibold"><%= @experience.name %></p>
       <% if @experience.user == current_user %>
         <div class="flex items-start" data-controller="experience">
           <svg
@@ -70,7 +70,7 @@
       <% end %>
     </div>
     <div class="text-description mt-1 flex items-center">
-      4.3
+      <%= @average_rating %>
       <div class="ml-1 flex">
         <!-- star rating -->
         <% 5.times do %>
