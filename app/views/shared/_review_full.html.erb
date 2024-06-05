@@ -20,7 +20,7 @@
   </div>
   <div class="flex items-center font-light text-slate-500">
     <div class="flex w-full items-center justify-between">
-      <p><%= review.created_at %></p>
+      <p><%= review.created_at.strftime('%d. %b %Y')  %></p>
       <div class="flex items-center">
         <div class="mr-1"><%= review.user.username %></div>
         <div class="size-8 rounded-full ring-2 ring-white">

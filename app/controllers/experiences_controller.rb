@@ -3,11 +3,12 @@ class ExperiencesController < ApplicationController
   before_action :set_experience, only: %i[show edit update destroy]
 
   def index
-    if params[:query].present?
-      @experiences = Experience.where(params[:query])
-    else
-      @experiences = Experience.all
-    end
+    @experiences = Experience.all
+    return unless params[:spot_id]
+
+    @spot = Spot.find(params[:spot_id])
+    links = Link.where(spot: params[:spot_id])
+    @experiences = links.map { |link| link.experience }
   end
 
   def show

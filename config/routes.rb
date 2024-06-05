@@ -19,9 +19,9 @@ Rails.application.routes.draw do
     resources :visits, only: %i[create]
     resources :reviews, only: %i[new create index]
     resources :links, only: %i[new create]
+    resources :experiences, only: %i[index]
   end
 
-<<<<<<< HEAD
   resources :experiences, only: %i[index show new create edit destroy] do
     resources :reviews, only: %i[new create index]
     resources :links, only: %i[new create]

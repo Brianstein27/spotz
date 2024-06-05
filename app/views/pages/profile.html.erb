@@ -91,7 +91,9 @@
     </div>
 
     <div id="reviews" data-toggle-target="reviews" class="hidden">
-      <%= render "shared/review" %>
+      <% @reviews.each do |review| %>
+        <%= render "review_profile", review: review %>
+      <% end %>
     </div>
   </div>
 

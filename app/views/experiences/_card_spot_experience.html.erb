@@ -12,8 +12,8 @@
         <div class="flex items-center justify-between ">
           <p class="text-s font-semibold"><%= spot.name %></p>
           <!-- trashcan -->
-          <% if experience.user = current_user %>
-            <% link = Link.where(spot: spot, experience: experience).first %>
+          <% link = Link.where(spot: spot, experience: experience).first %>
+          <% if experience.user == current_user %>
             <%= button_to link_path(link), method: :delete do %>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

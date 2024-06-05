@@ -5,16 +5,16 @@ class SpotsController < ApplicationController
   def index
     if params[:query].present?
       if params[:category_ids].present?
-      @spots = Spot.global_search(params[:query]).where(category_id: params[:category_ids])
+        @spots = Spot.global_search(params[:query]).where(category_id: params[:category_ids])
       else
-      @spots = Spot.global_search(params[:query])
+        @spots = Spot.global_search(params[:query])
       end
     elsif params[:category_ids].present?
       @spots = Spot.global_search(params[:category_ids])
     else
       @spots = Spot.all
     end
-    
+
     @markers = @spots.geocoded.map do |spot|
       {
         latitude: spot.latitude,
@@ -31,10 +31,12 @@ class SpotsController < ApplicationController
         longitude: @spot.longitude,
         marker_html: render_to_string(partial: "marker")
       }]
-    @bookmark = Bookmark.where(user: current_user, spot: @spot).first
+    @bookmarks = Bookmark.where(spot: @spot)
+    @visits = Visit.where(spot: @spot)
     @events = Event.all
     links = Link.where(spot: @spot)
     @experiences = links.map(&:experience)
+    @average_rating = average_rating
   end
 
   def options
@@ -49,6 +51,11 @@ class SpotsController < ApplicationController
   end
 
   private
+
+  def average_rating
+    rating = 0
+    @spot.reviews.each { |review| rating += review.rating }
+  end
 
   def set_spot
     @spot = Spot.find(params[:id])
