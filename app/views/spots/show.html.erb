@@ -95,31 +95,38 @@
         4.3
         <div class="ml-1 flex">
           <!-- star rating -->
-          <% 5.times do %>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 16 16"
-              fill="currentColor"
-              class="size-3"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M8 1.75a.75.75 0 0 1 .692.462l1.41 3.393 3.664.293a.75.75 0 0 1 .428 1.317l-2.791 2.39.853 3.575a.75.75 0 0 1-1.12.814L7.998 12.08l-3.135 1.915a.75.75 0 0 1-1.12-.814l.852-3.574-2.79-2.39a.75.75 0 0 1 .427-1.318l3.663-.293 1.41-3.393A.75.75 0 0 1 8 1.75Z"
-                clip-rule="evenodd"
-              />
-            </svg>
-          <% end %>
+          <div class="rating">
+            <div class="rating-average">
+              <div class="star-outer">
+                <div class="star-inner flex">
+                  <% 5.times do %>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 16 16"
+                      fill="currentColor"
+                      class="size-3"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M8 1.75a.75.75 0 0 1 .692.462l1.41 3.393 3.664.293a.75.75 0 0 1 .428 1.317l-2.791 2.39.853 3.575a.75.75 0 0 1-1.12.814L7.998 12.08l-3.135 1.915a.75.75 0 0 1-1.12-.814l.852-3.574-2.79-2.39a.75.75 0 0 1 .427-1.318l3.663-.293 1.41-3.393A.75.75 0 0 1 8 1.75Z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <!-- amount of reviews -->
-        <div class="ml-1">(412)</div>
+        <div class="ml-1">(<%= @spot.reviews.count %>)</div>
         <div class="ml-1 text-teal-400">
-
-          <%= @short_distance %> <%= " • km away" %>
-          </div>
+          • <%= @short_distance %> km away
+        </div>
       </div>
     </div>
     <!-- bookmark -->
-    <% if @bookmark %>
+    <% if @bookmarks.first %>
       <%= button_to bookmark_path(@spot), method: :delete, class: "w-full" do %>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -156,22 +163,21 @@
   <!-- Metrics -->
   <div class="flex w-full justify-between border-b border-slate-200 py-4">
     <div class="w-32 flex-col px-4 py-2">
-      <div class="text-center font-bold">1.2K</div>
+      <div class="text-center font-bold"><%= @bookmarks.count %></div>
+      <div class="text-center">Bookmarks</div>
+    </div>
+    <div class="w-32 flex-col px-4 py-2">
+      <div class="text-center font-bold"><%= @visits.count %></div>
       <div class="text-center">Visits</div>
     </div>
     <div class="w-32 flex-col px-4 py-2">
-      <div class="text-center font-bold">600</div>
-      <div class="text-center">Likes</div>
-    </div>
-    <div class="w-32 flex-col px-4 py-2">
-      <div class="text-center font-bold">51</div>
+      <div class="text-center font-bold"><%= @experiences.count %></div>
       <div class="text-center">Experiences</div>
     </div>
   </div>
   <!-- Description -->
   <p class="border-b border-slate-200 py-4 text-slate-700"><%= @spot.description %></p>
 </div>
-
 <!-- Map Section -->
 <div class="border-b border-slate-200 pb-4">
   <div
@@ -217,9 +223,9 @@
     <span class="text-teal-400">(<%= @spot.reviews.count %>)</span>
   </div>
   <%= render "shared/review_carousel", reviews: @spot.reviews %>
-    <%= link_to spot_reviews_path(@spot) do %>
-      <%= render "shared/button_secondary", text: "View all reviews" %>
-    <% end %>
+  <%= link_to spot_reviews_path(@spot) do %>
+    <%= render "shared/button_secondary", text: "View all reviews" %>
+  <% end %>
 </div>
 
 <div class="mt-12 text-xl font-bold">Experiences
@@ -232,7 +238,7 @@
   <% end %>
 </div>
 <div class="mb-4">
-  <%= link_to experiences_path do %>
-      <%= render "shared/button_secondary", text: "View all experiences" %>
-    <% end %>
+  <%= link_to spot_experiences_path(@spot) do %>
+    <%= render "shared/button_secondary", text: "View all experiences" %>
+  <% end %>
 </div>

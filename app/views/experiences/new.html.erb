@@ -1,16 +1,18 @@
-<div class="my-7 text-2xl font-bold">
-  <h1>Create a new experience</h1>
+<div class="my-4 text-2xl font-bold">
+  <h1>Create an experience</h1>
 </div>
-<div class="my-7 text-xl font-bold">
+<div class="text-xl">
   <%= simple_form_for(@experience) do |f| %>
   <div class="my-4">
     <%= f.input :name, placeholder: 'name', label:false, input_html: { class: 'rounded-lg w-full border-slate-300' } %>
   </div>
   <div class="my-4">
-    <%= f.input :description, placeholder: "description", label:false, input_html: { class: 'rounded-lg w-full border-slate-300' }%>
+    <%= f.input :description, placeholder: "describe the experience...", label:false, input_html: { class: 'rounded-lg w-full border-slate-300' }%>
   </div>
     <div class="my-4">
-    <%= f.submit 'create experience', class: 'btn btn-flat w-full h-11 flex items-center justify-center rounded-xl border-teal-400 bg-teal-400 font-bold text-white cursor-pointer' %>
+  <%= button_tag(type: 'submit', class: "w-full") do %>
+    <%= render "shared/button_primary", text: "Create experience" %>
+  <% end %>
   </div>
   <% end %>
 </div>

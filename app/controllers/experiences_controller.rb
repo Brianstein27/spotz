@@ -1,16 +1,17 @@
 class ExperiencesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :index, :show ]
+  skip_before_action :authenticate_user!, only: %i[index show]
+  before_action :set_experience, only: %i[show edit update destroy]
 
   def index
-    if params[:query].present?
-      @experiences = Experience.where(params[:query])
-    else
-      @experiences = Experience.all
-    end
+    @experiences = Experience.all
+    return unless params[:spot_id]
+
+    @spot = Spot.find(params[:spot_id])
+    links = Link.where(spot: params[:spot_id])
+    @experiences = links.map { |link| link.experience }
   end
 
   def show
-    @experience = Experience.find(params[:id])
   end
 
   def new
@@ -29,15 +30,13 @@ class ExperiencesController < ApplicationController
 
   def destroy
     @experience.destroy
-    # redirect_to experiences_path
+    redirect_to experiences_path
   end
 
   def edit
-    @experience = Experience.find(params[:id])
   end
 
   def update
-    @experience = Experience.find(params[:id])
     if @experience.update(experience_params)
       flash[:notice] = "Your experience was successfully updated."
       redirect_to experience_path(@experience)
@@ -48,8 +47,11 @@ class ExperiencesController < ApplicationController
 
   private
 
+  def set_experience
+    @experience = Experience.find(params[:id])
+  end
+
   def experience_params
     params.require(:experience).permit(:name, :description)
   end
-
 end
