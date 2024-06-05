@@ -19,7 +19,8 @@ class SpotsController < ApplicationController
       {
         latitude: spot.latitude,
         longitude: spot.longitude,
-        marker_html: render_to_string(partial: "marker")
+        marker_html: render_to_string(partial: "marker"),
+        name: spot.name
       }
     end
   end
@@ -29,7 +30,8 @@ class SpotsController < ApplicationController
       [{
         latitude: @spot.latitude,
         longitude: @spot.longitude,
-        marker_html: render_to_string(partial: "marker")
+        marker_html: render_to_string(partial: "marker"),
+        name: @spot.name
       }]
     @bookmarks = Bookmark.where(spot: @spot)
     @visits = Visit.where(spot: @spot)

@@ -16,6 +16,7 @@ export default class extends Controller {
       center: [this.markersValue[0].longitude, this.markersValue[0].latitude],
       zoom: 14,
     })
+
     this.map.addControl(new mapboxgl.NavigationControl());
     this.#addMarkersToMap()
     if (this.markersValue.length > 1) {
@@ -31,12 +32,17 @@ export default class extends Controller {
       //el.style.backgroundImage = 'url(../assets/images/spotz_symbol.png)';
       el.style.width = '32px';
       el.style.height = '32px';
+
+      const popup = new mapboxgl.Popup({ offset: 25 }).setText(
+        marker.name);
       //el.style.backgroundSize = '100%';
       new mapboxgl.Marker(el)
         .setLngLat([ marker.longitude, marker.latitude ])
         .addTo(this.map)
+        .setPopup(popup)
     })
   }
+
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds();
