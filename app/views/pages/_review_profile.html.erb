@@ -1,4 +1,4 @@
-<div class="w-full my-4 rounded-xl border border-slate-300 p-4">
+<div class="my-4 w-full rounded-xl border border-slate-300 p-4">
   <p>
     <%= review.content %>
   </p>
@@ -23,7 +23,7 @@
     <div class="flex w-full items-center justify-between">
       <p><%= review.created_at.strftime("%d. %b %Y") %></p>
       <div class="flex items-center">
-        <div class="mr-1"><%= review.reviewable.name %></div>
+        <div class="mr-1"><%= review.reviewable.name[0..30]... %></div>
         <% if review.reviewable_type == "Spot" %>
           <div class="size-8 rounded-full ring-2 ring-white">
             <%= cl_image_tag(
