@@ -4,21 +4,7 @@
     <div class="ml-2 text-4xl font-bold">Bookmarks</div>
   </div>
 
-  <div data-controller="item-toggle">
-
-    <div class="sticky top-0 z-10 bg-white pb-6 pt-6">
-      <div class="flex justify-evenly divide-x-2 divide-slate-200 font-semibold">
-        <div class="mb-1 w-full cursor-pointer pb-2 text-center text-xl font-light text-slate-500" data-action="click->item-toggle#showItem1" data-item-toggle-target="item1Header">
-            List
-        </div>
-        <div class="mb-1 w-full cursor-pointer pb-2 text-center text-xl font-light text-slate-500" data-action="click->item-toggle#showItem2" data-item-toggle-target="item2Header">
-            Map
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <div id="item1" data-item-toggle-target="item1" class="hidden">
+    <div class= "mt-6">
         <% @bookmarks.each do |bookmark| %>
           <%= link_to spot_path(bookmark.spot) do %>
             <div class="mb-8 mt-4">
@@ -27,11 +13,6 @@
           <% end %>
         <% end %>
       </div>
-
-      <div id="item2" data-item-toggle-target="item2" class="hidden">
-        <p>experiences</p>
-      </div>
     </div>
-
   </div>
 </div>
