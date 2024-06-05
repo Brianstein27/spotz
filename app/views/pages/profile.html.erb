@@ -5,7 +5,6 @@
           <div class="h-9 w-9 rounded-full bg-teal-400 text-teal-400">.</div>
           <div class="ml-2 text-4xl font-bold">profile</div>
         </div>
-
         <div>
           <div class="cursor-pointer" data-action="click->toggle#showItem" data-toggle-target="itemHeader">
             <svg
@@ -27,13 +26,11 @@
             </svg>
           </div>
         </div>
-
       </div>
-
   </div>
 
 
-  <div class="mt-6 block items-center justify-center p-1 relative">
+  <div class="relative mt-6 block items-center justify-center p-1">
     <%= cl_image_tag(current_user.photo.key, class: "mx-auto h-40 w-40 rounded-full") %>
     <div class="flex justify-center">
       <div class="mt-2 text-center">
@@ -102,7 +99,6 @@
       </div>
   </div>
 
-
     <div class="space-around mb-8 mt-4 flex justify-evenly text-sm text-gray-600">
       <div>
         <span
@@ -124,8 +120,6 @@
       <div>
         |
       </div>
-
-
       <div>
         <span
           data-action="click->toggle#showReviews"
@@ -134,7 +128,6 @@
         >Reviews (<%= @reviews.count %>)</span>
       </div>
     </div>
-
 
     <div>
       <div id="visits" data-toggle-target="visits" class="hidden">
@@ -156,7 +149,5 @@
         <%= render "review_profile", review: review %>
       <% end %>
     </div>
-    </div>
-
-
+  </div>
 </div>

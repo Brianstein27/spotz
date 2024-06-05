@@ -32,7 +32,16 @@
             <% end %>
           <% end %>
         </div>
-        <p class="text-description flex items-center align-middle font-light">3.5
+        <p class="text-description flex items-center align-middle font-light">
+        <% rating = 0 %>
+        <% spot.reviews.each { |review| rating += review.rating } %>
+        <% rating = rating.to_f / spot.reviews.count %>
+        <p class="text-description flex items-center align-middle font-light">
+          <% if rating.nan? %>
+            0
+          <% else %>
+            <%= rating %>
+          <% end %>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
