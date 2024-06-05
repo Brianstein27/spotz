@@ -38,8 +38,14 @@
         <div>
           <%= form_with model: [@reviewable, @review], data: {turbo_frame: "_top"} do |f| %>
             <div class="flex w-full justify-between">
-              <%= link_to spot_path(params[:spot_id]) do %>
-                Cancel
+              <% if params[:spot_id] %>
+                <%= link_to spot_path(params[:spot_id]) do %>
+                  Cancel
+                <% end %>
+              <% else %>
+                <%= link_to experience_path(params[:experience_id]) do %>
+                  Cancel
+                <% end %>
               <% end %>
               <%= button_tag(type: 'submit', class: "font-bold text-teal-400") do %>
                 Submit

@@ -24,4 +24,7 @@
     <%= render "shared/experience", experience: experience %>
   <% end %>
 </div>
-<%= render "shared/button_secondary", text: "View all experiences" %>
+
+<%= link_to experiences_path do %>
+  <%= render "shared/button_secondary", text: "View all experiences" %>
+<% end %>

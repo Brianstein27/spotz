@@ -155,9 +155,10 @@
         </div>
       </div>
 
-      <div id="reviews" data-toggle-target="reviews" class="hidden">
-        <%= render "shared/review" %>
-      </div>
+    <div id="reviews" data-toggle-target="reviews" class="hidden">
+      <% @reviews.each do |review| %>
+        <%= render "review_profile", review: review %>
+      <% end %>
     </div>
 
 

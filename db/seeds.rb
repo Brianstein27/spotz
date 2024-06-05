@@ -120,7 +120,7 @@ spots.each_with_index do |spot, index|
   new_spot.save
 end
 
-puts "Created #{Spot.count} location/s."
+puts "Created #{Spot.count} spotz!"
 
 
 
@@ -146,29 +146,42 @@ puts "Events created!"
 
 puts "Creating user/s."
 
-users =  [ { email: "user@user.com", password: "123456", username: "user1" } ]
+user_avatars = [
+"https://res.cloudinary.com/dn7d3hatk/image/upload/v1717512557/Emma_ehgg1t.jpg",
+"https://res.cloudinary.com/dn7d3hatk/image/upload/v1717512647/Precious_njbmyw.jpg"
+]
 
-users.each do |user|
-  User.create!(user)
+users =  [
+  { email: "emma@lewagon.com", password: "123456", username: "emmavs" },
+  { email: "precious@precious.com", password: "123456", username: "precious" },
+]
+
+users.each_with_index do |user, index|
+  new_user = User.create!(user)
+  new_user.photo.attach(io: URI.open(user_avatars[index]), filename: File.basename(user_avatars[index]))
+  puts "User created! #{new_user.username}"
+  new_user.save
 end
 
 puts "Created #{User.count} user."
 
-
 experiences = [
-  { user_id: User.all.sample.id, name: "Fun Day in the city", description: "A fun day in a city could start with a visit to a popular landmark or iconic attraction, setting the tone with a bit of local history and culture." },
-  { user_id: User.all.sample.id, name: "Urban Adventure Day", description: "Kick off your day with a thrilling bike tour through the city, exploring hidden alleyways, scenic parks, and bustling neighborhoods" },
-
+  { user_id: User.all.first.id, name: "Rake it till you make it at le Wagon!", description: "Start you daily grind with breakfast at Kamps. After a well deserved nap during your coding lecture at le Wagon get lunch at Lidl and spend the rest of the day enjoying the sun at the Besselpark." },
+  { user_id: User.all.last.id, name: "Urban Adventure Day", description: "Kick off your day with a thrilling bike tour through the city, exploring hidden alleyways, scenic parks, and bustling neighborhoods" },
 ]
-Experience.create!(experiences)
-puts "Experience created! #{Experience.name}"
-puts "Created #{Experience.count} experiences!"
+
+  Experience.create!(experiences)
+  puts "Experience created! #{Experience.name}"
+  puts "Created #{Experience.count} experiences!"
 
 links = [
-  { spot_id: Spot.all.sample.id, experience_id: Experience.all.sample.id },
-  { spot_id: Spot.all.sample.id, experience_id: Experience.all.sample.id },
-
+  { spot_id: Spot.all.first.id, experience_id: Experience.all.first.id },
+  { spot_id: Spot.all.second.id, experience_id: Experience.all.first.id },
+  { spot_id: Spot.all.third.id, experience_id: Experience.all.first.id },
+  { spot_id: Spot.all.fourth.id, experience_id: Experience.all.first.id },
+  { spot_id: Spot.all.fifth.id, experience_id: Experience.all.second.id },
+  { spot_id: Spot.all.last.id, experience_id: Experience.all.second.id },
 ]
 
 Link.create!(links)
-puts "Created #{Link.count} experiences!"
+puts "Created #{Link.count} links!"
