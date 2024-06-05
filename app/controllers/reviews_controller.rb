@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
       @reviews = Review.where(reviewable_type: "Spot", reviewable_id: params[:spot_id])
     else
       @experience = Experience.find(params[:experience_id])
-      @review = Review.where(reviewable_type: "Experience", reviewable_id: params[:experience_id])
+      @reviews = Review.where(reviewable_type: "Experience", reviewable_id: params[:experience_id])
     end
   end
 

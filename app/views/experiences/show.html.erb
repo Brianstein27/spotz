@@ -1,9 +1,9 @@
 <div class="flex h-full flex-col justify-between divide-y-2 divide-gray-100">
   <div class="pb-4">
-    <div class="flex items-center justify-between ">
-      <p class="text-xl font-semibold"><%= @experience.name %></p>
+    <div class="flex items-start justify-between">
+      <p class="text-xl font-semibold w-2/3"><%= @experience.name %></p>
       <% if @experience.user == current_user %>
-        <div class="flex items-center" data-controller="experience">
+        <div class="flex items-start" data-controller="experience">
           <svg
             data-controller="share"
             data-share-url-value="<%= experience_url(@experience) %>"
@@ -18,89 +18,26 @@
               d="M12 6a2 2 0 1 0-1.994-1.842L5.323 6.5a2 2 0 1 0 0 3l4.683 2.342a2 2 0 1 0 .67-1.342L5.995 8.158a2.03 2.03 0 0 0 0-.316L10.677 5.5c.353.311.816.5 1.323.5Z"
             />
           </svg>
-          <svg
-            data-experience-target="edit"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="size-6 mr-2 hidden"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
-            />
-          </svg>
-          <svg
-            data-experience-target="delete"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="size-6 mr-2 hidden text-red-600"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
-            />
-          </svg>
-          <svg
-            data-experience-target="options"
-            data-action="click->experience#toggleUser"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="size-6"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
-            />
-          </svg>
-        </div>
-      <% elsif user_signed_in? %>
-        <div class="flex items-center" data-controller="experience">
-          <svg
-            data-controller="share"
-            data-share-url-value="<%= experience_url(@experience) %>"
-            data-action="click->share#share"
-            data-experience-target="share"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            fill="currentColor"
-            class="size-7 mr-2 hidden"
-          >
-            <path
-              d="M12 6a2 2 0 1 0-1.994-1.842L5.323 6.5a2 2 0 1 0 0 3l4.683 2.342a2 2 0 1 0 .67-1.342L5.995 8.158a2.03 2.03 0 0 0 0-.316L10.677 5.5c.353.311.816.5 1.323.5Z"
-            />
-          </svg>
-          <%= link_to new_experience_review_path(@experience), data: { turbo_frame: "modal" }, class: "w-full" do %>
+          <%= link_to experience_path(@experience), data: { turbo_method: :delete } do %>
             <svg
-              data-experience-target="review"
+              data-experience-target="delete"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="size-7 mr-2 hidden"
+              class="size-6 mr-2 hidden text-red-600"
             >
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
+                d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
               />
             </svg>
           <% end %>
           <svg
             data-experience-target="options"
-            data-action="click->experience#toggleVisitor"
+            data-action="click->experience#toggleUser"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -152,20 +89,24 @@
         <% end %>
       </div>
       <p class="text-slate-500">
-        (412)
+        (<%= @experience.reviews.length %>)
       </p>
       <p class="text-description ml-1 text-teal-400">•
         <%= @experience.spots.count %>
         spotz</p>
     </div>
-    <div class="text-description mt-1 flex items-center font-light"><div class="text-gray-400">created by
-        <%= @experience.user.username %></div>
-      <div class="size-6 ml-1 mr-3 rounded-full ring-2 ring-white">
-        <img
-          class="rounded-full"
-          src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-          alt=""
-        >
+    <div class="flex justify-between">
+      <div class="text-description mt-1 flex items-center font-light"><div class="text-gray-400">created by
+          <%= @experience.user.username %></div>
+        <div class="size-6 ml-1 mr-3 rounded-full ring-2 ring-white">
+          <%= cl_image_tag @experience.user.photo.key,
+          class: "rounded-full ring-2 ring-white" %>
+        </div>
+      </div>
+      <div>
+        <%= link_to experience_reviews_path(@experience) do %>
+          <p class="text-description mt-1 flex items-center">See reviews</p>
+        <% end %>
       </div>
     </div>
   </div>
