@@ -37,7 +37,6 @@ class ExperiencesController < ApplicationController
   end
 
   def update
-    raise
     if @experience.update(experience_params)
       flash[:notice] = "Your experience was successfully updated."
       redirect_to experience_path(@experience)
