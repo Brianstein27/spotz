@@ -27,8 +27,7 @@ class ReviewsController < ApplicationController
       @reviewable = Spot.find(params[:spot_id])
       @review.reviewable = @reviewable
       @review.save
-      # redirect_back(fallback_location: spot_path(@reviewable))
-      redirect_to spot_reviews_path(@reviewable)
+      redirect_back(fallback_location: spot_path(@reviewable))
     elsif params[:experience_id]
       @reviewable = Experience.find(params[:experience_id])
       @review.reviewable = @reviewable

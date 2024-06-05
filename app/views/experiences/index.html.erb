@@ -1,23 +1,20 @@
 <!--HEADER-->
-<div class="relative">
-  <div class="mt-8 flex justify-between items-center">
+<div class="mt-8 flex items-center justify-between">
   <div class="flex">
     <div class="h-9 w-9 rounded-full bg-teal-400 text-teal-400">.</div>
-    <div class="ml-2 text-4xl font-bold flex">experiences</div>
-  </div>
-    <%= link_to new_experience_path(@experiences) do %>
-    <div class= "flex items-center">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-slate-400">
-   <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-  </svg>
-    </div>
-  <% end %>
+    <div class="ml-2 flex text-4xl font-bold">experiences</div>
   </div>
 </div>
 
+<%= link_to new_experience_path(@experiences) do %>
+  <div class="mt-6 mb-2 pb-6 border-b-2 border-gray-100">
+    <%= render "shared/button_primary", text: "Add an experience" %>
+  </div>
+<% end %>
+
 <% if @spot %>
   <div class="border-b-2">
-    <%= render "shared/card_spot_bookmark", spot:@spot %>
+    <%= render "shared/card_spot_bookmark", spot: @spot %>
   </div>
 <% end %>
 
