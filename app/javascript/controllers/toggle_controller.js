@@ -3,9 +3,8 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="toggle"
 export default class extends Controller {
 
-  static targets = [ "visits", "experiences", "reviews", "visitsHeader", "experiencesHeader", "reviewsHeader", "tags"];
+  static targets = [ "item", "itemHeader","visits", "experiences", "reviews", "visitsHeader", "experiencesHeader", "reviewsHeader", "tags" ];
   connect() {
-    console.log("connected");
     this.showExperiences()
   }
 
@@ -44,5 +43,12 @@ export default class extends Controller {
 
   toggle() {
     this.tagsTarget.classList.toggle("hidden")
+  }
+
+  showItem() {
+    console.log("hello sir");
+    this.itemTarget.classList.remove("hidden")
+    // this.itemTarget.classList.add("z-0")
+    this.itemHeaderTarget.classList.add("text-teal-400")
   }
 };
