@@ -14,7 +14,7 @@ class SpotsController < ApplicationController
     else
       @spots = Spot.all
     end
-    
+
     @markers = @spots.geocoded.map do |spot|
       {
         latitude: spot.latitude,
@@ -35,6 +35,9 @@ class SpotsController < ApplicationController
     @events = Event.all
     links = Link.where(spot: @spot)
     @experiences = links.map(&:experience)
+
+    @distance = @spot.distance_to([52.51,13.39])
+    @short_distance = @distance.round(2) 
   end
 
   def options
