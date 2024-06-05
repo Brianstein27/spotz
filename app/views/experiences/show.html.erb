@@ -95,7 +95,6 @@
         <%= @experience.spots.count %>
         spotz</p>
     </div>
-<<<<<<< HEAD
     <div class="flex justify-between">
       <div class="text-description mt-1 flex items-center font-light"><div class="text-gray-400">created by
           <%= @experience.user.username %></div>
@@ -111,12 +110,6 @@
         <%= link_to experience_reviews_path(@experience) do %>
           <p class="text-description mt-1 flex items-center">See reviews</p>
         <% end %>
-=======
-    <div class="text-description mt-1 flex items-center font-light"><div class="text-gray-400">created by
-        <%= @experience.user.username %></div>
-      <div class="size-6 ml-1 mr-3 rounded-full ring-2 ring-white">
-        <%= cl_image_tag @experience.user.photo.key, class: "size-6 ml-1 mr-3 rounded-full ring-2 ring-white" %>
->>>>>>> 9a623ae8e7ee1a0bd81fa4aecd6f46f0cc9412d6
       </div>
     </div>
   </div>
