@@ -80,7 +80,7 @@
     </div>
     <div class="flex items-center justify-between">
       <p class="text-description font-light"><%= spot.subtitle %></p>
-      <p class="text-description font-light"> <%= [0.3,0.5,0.8,0.2].sample %> <%= "km away" %> </p>
+      <p class="text-description font-light"> <%= spot.distance_to([52.51,13.39]).round(2) %> <%= "km away" %> </p>
     </div>
   </div>
 </div>
