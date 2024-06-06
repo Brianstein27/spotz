@@ -5,7 +5,7 @@
 
 <div data-controller="item-toggle">
 
-  <div class="top-0 z-10 bg-white pb-2 pt-2">
+  <div class="top-0 z-10 bg-white pb-2 pt-8">
     <%= render "searchbar" %>
     <div class="mt-2 flex justify-evenly divide-x-2 divide-slate-200">
       <div
@@ -32,7 +32,7 @@
   </div>
   <div>
     <div id="item1" data-item-toggle-target="item1" class="hidden">
-      <% @spots.each do |spot| %>
+      <% @spots.sort_by(&:name).each do |spot| %>
         <div class="mb-8 mt-4">
           <%= render "card_spot", spot: spot %>
         </div>
