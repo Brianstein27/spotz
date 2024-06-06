@@ -229,7 +229,7 @@
 </div>
 <div class="divide-y-2 divide-gray-100">
 
-  <% @experiences.each do |experience| %>
+  <% @experiences[0..1].each do |experience| %>
     <%= render "shared/experience", experience: experience %>
   <% end %>
 </div>
