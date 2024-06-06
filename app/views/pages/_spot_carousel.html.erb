@@ -4,7 +4,7 @@
   "
 >
   <div class="ml-4 flex">
-    <% spots[1..10].each do |spot| %>
+    <% spots[0..10].sort_by(&:name).each do |spot| %>
       <%= link_to spot_path(spot) do %>
         <%= render "card_spot_home", spot: spot %>
       <% end %>
