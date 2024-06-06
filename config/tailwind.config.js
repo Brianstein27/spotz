@@ -22,7 +22,7 @@ module.exports = {
       },
       colors: {
         customColorFood: "#b09ac8",
-        customColorNature: "#b6c8ad",
+        customColorNature: "#bad878",
         customColorCulture: "#e4f1b0",
         customColorHangout: "#a5cebb",
         customColorNightlife: "#eabcbc",

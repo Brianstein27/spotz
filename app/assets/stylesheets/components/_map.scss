@@ -6,7 +6,7 @@
   padding: 13px;
   text-align: center;
   font-family: "Open Sans", sans-serif;
-  background: #f1deff;
+  background: #defff6;
 }
 
 .mapboxgl-popup-close-button {
@@ -14,10 +14,26 @@
   border: none;
  }
 
- #index.mapboxgl-map {
-  height: 558px;
- }
+#index.mapboxgl-map {
+  height: 250px;
+}
 
+// .mapboxgl-canvas-container {
+//   height: 560px;
+//   position: relative;
+//   .mapboxgl-canvas {
+//     height: 100%;
+//     position: absolute;
+//     width: 100%;
+//     top: 0;
+//     bottom: 0;
+//   }
+// }
+
+// .mapboxgl-canvas {
+//   height: 560px !important;
+//   // object-fit: cover;
+//  }
 // .marker {
 //   background-image: url('mapbox-icon.png');
 //   background-size: cover;
