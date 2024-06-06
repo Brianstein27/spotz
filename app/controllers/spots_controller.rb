@@ -34,6 +34,7 @@ class SpotsController < ApplicationController
         name: @spot.name
       }]
     @bookmarks = Bookmark.where(spot: @spot)
+    @bookmark = Bookmark.where(spot: @spot, user: current_user)
     @visits = Visit.where(spot: @spot)
     @events = Event.all
     links = Link.where(spot: @spot)
