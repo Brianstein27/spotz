@@ -39,17 +39,18 @@
       <% end %>
     </div>
     <div id="item2" data-item-toggle-target="item2" class="hidden">
-
-      <div
-        id="index"
-        class="
-          mb-4 mt-8 flex h-60 w-full flex-col justify-center rounded-xl border border-b
-          border-slate-200
-        "
-        data-controller="map"
-        data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-      >
+      <div class="map-container">
+        <div
+          id="index"
+          class="
+            mb-4 mt-4 flex flex-col justify-center rounded-xl border border-b
+            border-slate-200
+          "
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+        >
+        </div>
       </div>
     </div>
   </div>
