@@ -4,7 +4,7 @@
   "
 >
   <div class="flex">
-    <% reviews.each do |review| %>
+    <% reviews[0..4].each do |review| %>
       <div class="ml-4">
         <%= render "shared/review", review: review %>
       </div>
