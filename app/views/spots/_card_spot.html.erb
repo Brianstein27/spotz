@@ -70,7 +70,7 @@
           <% if rating.nan? %>
             0
           <% else %>
-            <%= rating %>
+            <%= rating.round(1) %>
           <% end %>
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -95,7 +95,7 @@
         <% if @average_rating.nan? %>
           0
         <% else %>
-          <%= @average_rating %>
+          <%= @average_rating.round(1) %>
         <% end %>
         <div class="ml-1 flex">
           <!-- star rating -->
