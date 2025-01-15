@@ -41,9 +41,11 @@ class SpotsController < ApplicationController
     @experiences = links.map(&:experience)
     @average_rating = average_rating
 
-    @geoapify_hash = make_geoapify_request(ENV['GEOAPIFY_API_KEY'], client_ip) 
-    @distance = @spot.distance_to([@geoapify_hash["longitude"], @geoapify_hash["latitude"]])
-    @short_distance = @distance.round(2)
+    puts client_ip
+    # @geoapify_hash = make_geoapify_request(ENV['GEOAPIFY_API_KEY'], '206.22.56.21') 
+    # @distance = @spot.distance_to([@geoapify_hash["longitude"], @geoapify_hash["latitude"]])
+    # @short_distance = @distance.round(2)
+    @short_distance = client_ip
   end
 
   def options
