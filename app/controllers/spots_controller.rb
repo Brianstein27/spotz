@@ -41,7 +41,8 @@ class SpotsController < ApplicationController
     @experiences = links.map(&:experience)
     @average_rating = average_rating
 
-    @distance = @spot.distance_to([52.51,13.39])
+    @abstract_hash = JSON.parse(make_abstract_request(ENV['ABSTRACT_API_KEY'], client_ip)) 
+    @distance = @spot.distance_to(@abstract_hash['longitude'], @abstract_hash['latitude'])
     @short_distance = @distance.round(2)
   end
 
@@ -67,4 +68,25 @@ class SpotsController < ApplicationController
   def set_spot
     @spot = Spot.find(params[:id])
   end
+
+  def client_ip
+    request.remote_ip
+  end
+
+  def make_abstract_request(api_key, ip_address)
+    uri = URI("https://ipgeolocation.abstractapi.com/v1/?api_key=#{api_key}&ip_address=#{ip_address}")
+
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+
+    request = Net::HTTP::Get.new(uri)
+
+    response = http.request(request)
+    puts "Status code: #{ response.code }"
+    return response.body
+    rescue StandardError => error
+    puts "Error (#{ error.message })"
+  end
+
 end

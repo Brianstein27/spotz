@@ -82,3 +82,4 @@ gem "open-uri"
 gem "nokogiri"
 gem "csv"
 gem 'pg_search'
+gem 'net-http'

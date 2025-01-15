@@ -334,6 +334,7 @@ DEPENDENCIES
   geocoder
   importmap-rails
   jbuilder
+  net-http
   nokogiri
   open-uri
   pg (~> 1.1)
