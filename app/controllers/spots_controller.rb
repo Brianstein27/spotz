@@ -42,7 +42,7 @@ class SpotsController < ApplicationController
     @average_rating = average_rating
 
     @abstract_hash = JSON.parse(make_abstract_request(ENV['ABSTRACT_API_KEY'], client_ip)) 
-    @distance = @spot.distance_to(@abstract_hash['longitude'], @abstract_hash['latitude'])
+    @distance = @spot.distance_to([52.51, 13.39])
     @short_distance = @distance.round(2)
   end
 
