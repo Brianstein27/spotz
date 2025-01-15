@@ -42,7 +42,7 @@ class SpotsController < ApplicationController
     @average_rating = average_rating
 
     @geoapify_hash = make_geoapify_request(ENV['GEOAPIFY_API_KEY'], client_ip) 
-    @distance = @spot.distance_to([@geoapify_hash["longitude"], @geoapify_hash["latitude"]])
+    @distance = @spot.distance_to([@geoapify_hash["latitude"], @geoapify_hash["longitude"]])
     @short_distance = @distance.round(2)
   end
 
