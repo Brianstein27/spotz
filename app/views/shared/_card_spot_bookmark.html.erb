@@ -1,10 +1,10 @@
-<div class="relative my-4 flex h-28 w-full rounded-xl">
+<div class="relative my-4 flex h-28 w-full rounded-xl sm:h-40 xl:h-40">
   <%= link_to spot_path(spot) do %>
     <div class="absolute h-full w-11/12"></div>
   <% end %>
   <%= cl_image_tag(
     spot.photos.first.key,
-    class: "h-full w-1/3 rounded-lg object-cover",
+    class: "h-full w-1/3  xl:w-40 rounded-lg object-cover",
   ) %>
   <div class="w-2/3">
     <div class="ml-4 flex h-full flex-col justify-between">
@@ -51,27 +51,31 @@
         <% rating = 0 %>
         <% spot.reviews.each { |review| rating += review.rating } %>
         <% rating = rating.to_f / spot.reviews.count %>
-        <p class="text-description flex items-center align-middle font-light">
-          <% if rating.nan? %>
-            0
-          <% else %>
-            <%= rating.round(1) %>
-          <% end %>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            class="mx-1 h-4 w-4 pb-px text-teal-400"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
-              clip-rule="evenodd"
-            />
-          </svg>
-        </p>
+        <div class="flex items-center gap-2 divide-x-[1px] divide-solid divide-slate-200">
+          <p class="text-description flex items-center  align-middle font-light">
+            <% if rating.nan? %>
+              0
+            <% else %>
+              <%= rating.round(1) %>
+            <% end %>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="ml-1 h-4 w-4 pb-px text-teal-400"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </p>
+          <p class="text-description px-2 font-light"> <%= spot.distance_to([52.51,13.39]).round(2) %> <%= "km away" %> </p>
+        </div>
       </div>
-      <p class="text-description font-light"><%= spot.description[0..60] %>...</p>
+      <p class="text-description hidden h-full pt-2 font-light sm:block"><%= spot.description[0..120] %>...</p>
+      <p class="text-description font-light sm:hidden"><%= spot.description[0..60] %>...</p>
     </div>
   </div>
 </div>

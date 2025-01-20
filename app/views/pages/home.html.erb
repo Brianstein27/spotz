@@ -2,23 +2,23 @@
   <div class="h-9 w-9 rounded-full bg-teal-400 text-teal-400">.</div>
   <div class="ml-2 text-2xl font-bold">spot<span class="text-teal-400">z</span></div>
 </div>
-<div class="mt-10 xl:mt-32 text-2xl font-bold sm:text-xl">Popular 
+<div class="mt-10 border-solid border-slate-200 text-2xl font-medium  sm:text-xl xl:mb-8 xl:mt-32 xl:border-b-[1px] xl:pb-2">Popular 
   <span class="text-teal-400">spotz</span>
   in your area
 </div>
 
-<%= render "desktop_spot_grid", spots: @spots %>
+<%= render "desktop_spot_grid", spots: @spots[0..20] %>
 <div class="xl:hidden">
   <%= render "spot_carousel", spots: @spots %>
 </div>
 
-<div class="mt-8 text-2xl font-bold sm:text-xl xl:mt-20">
+<div class="mt-10 border-solid border-slate-200 text-2xl font-medium sm:text-xl xl:mb-4 xl:mt-20 xl:border-b-[1px] xl:pb-2">
   <span class="text-teal-400">Events</span>
   near you
 </div>
 <%= render "shared/event_carousel", events: @events %>
 
-<div class="mt-8 text-2xl font-bold sm:text-xl xl:mt-20">Curated
+<div class="mt-10 border-solid border-slate-200 text-2xl font-medium sm:text-xl xl:mb-4 xl:mt-20 xl:border-b-[1px] xl:pb-2">Curated
   <span class="text-teal-400">Experiences</span>
 </div>
 <div class="divide-y-2 divide-gray-100">

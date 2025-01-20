@@ -1,18 +1,18 @@
 <div class="relative">
-  <div class="flex">
+  <div class="flex xl:hidden">
     <div class="h-9 w-9 rounded-full bg-teal-400 text-teal-400">.</div>
     <div class="ml-2 text-4xl font-bold">bookmarks</div>
   </div>
-
-    <div class= "mt-6">
-        <% @bookmarks.each do |bookmark| %>
-          <%= link_to spot_path(bookmark.spot) do %>
-            <div class="mb-8 mt-4">
-              <%= render "shared/card_spot_bookmark", bookmark: bookmark, spot: bookmark.spot %>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
+  <div id="desktop" class="mt-20 hidden xl:block">
+    <%= render "bookmark_grid", spots: @bookmarks %>
+  </div>
+  <div id="mobile" class= "mt-6 xl:hidden">
+    <% @bookmarks.each do |bookmark| %>
+      <%= link_to spot_path(bookmark.spot) do %>
+        <div class="mb-8 mt-4">
+          <%= render "shared/card_spot_bookmark", bookmark: bookmark, spot: bookmark.spot %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
