@@ -1,13 +1,4 @@
 class Spot < ApplicationRecord
-  include PgSearch::Model
-  pg_search_scope :global_search,
-                  against: [:name, :subtitle, :category_id, :description, :address],
-                  associated_against: {
-                    category: :name
-                  },
-                  using: {
-                    tsearch: { prefix: true }
-                  }
   has_many :reviews, as: :reviewable
   has_many :experiences, through: :links
   has_many :bookmarks

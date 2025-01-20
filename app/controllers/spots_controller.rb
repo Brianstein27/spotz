@@ -4,13 +4,7 @@ class SpotsController < ApplicationController
 
   def index
     if params[:query].present?
-      if params[:category_ids].present?
-        @spots = Spot.global_search(params[:query]).where(category_id: params[:category_ids])
-      else
         @spots = Spot.global_search(params[:query])
-      end
-    elsif params[:category_ids].present?
-      @spots = Spot.where(category_id: params[:category_ids])
     else
       @spots = Spot.all
     end
