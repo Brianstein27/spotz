@@ -1,0 +1,82 @@
+<div  class="hidden xl:flex fixed top-0 w-screen z-50 bg-white border-b-[1px] border-solid border-slate-200 py-4 ">
+<div  class="flex mx-auto items-center justify-between container" data-controller="dropdown-toggle">
+  <div id="logo">
+    <%= link_to root_path do %>
+      <div class="flex">
+        <div class="h-9 w-9 rounded-full bg-teal-400 text-teal-400">.</div>
+        <div class="ml-2 text-2xl font-bold">spot<span class="text-teal-400">z</span></div>
+      </div>
+    <% end %>
+  </div>
+  <div id="links" class="flex gap-2">
+    <%= link_to spots_path do %>
+      <span class="px-4 py-3 text-lg  text-slate-800<% if current_page?(controller: '/spots', action: 'index') %> font-semibold <% else %>  rounded-full  hover:bg-slate-100 hover:text-slate-700<% end %>">Find Spots</span>
+    <% end %>
+      <%= link_to experiences_path do %>
+        <span class="px-4 py-3 text-lg  text-slate-800<% if current_page?(controller: '/experiences', action: 'index') %> font-semibold <% else %>  rounded-full  hover:bg-slate-100 hover:text-slate-700<% end %>">Experiences</span>
+      <% end %>
+    <% if user_signed_in? %>
+      <%= link_to bookmarks_path do %>
+        <span class="px-4 py-3 text-lg  text-slate-800<% if current_page?(controller: '/bookmarks', action: 'index') %> font-semibold <% else %>  rounded-full  hover:bg-slate-100 hover:text-slate-700<% end %>">Bookmarks</span>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="profile" class="relative z-50">
+    <div data-action="click->dropdown-toggle#toggle" class="flex cursor-pointer items-center rounded-full border-[1px] border-solid border-slate-200 px-4 py-2 hover:drop-shadow-md">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="size-6 text-slate-600"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+        />
+      </svg>
+      <% if user_signed_in? %>
+        <%= cl_image_tag(current_user.photo.key, class: "ml-2 h-8 w-8 rounded-full") %>
+      <% else %>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="<% if current_page?(controller: '/pages', action: 'profile') %> 2.5 <% else %> 1.5<% end %>"
+          stroke="currentColor"
+          class="ml-1 h-9 w-9 text-slate-600">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+          />
+        </svg>
+      <% end %>
+    </div>
+    <div data-dropdown-toggle-target="dropdown" class="hidden transition-all duration-300 transform origin-top-right -translate-y-2 scale-95">
+      <div class="z-50 absolute right-0 top-2 w-56 mt-2 origin-top-right bg-white border border-slate-200 divide-y divide-slate-100 rounded-md shadow-lg outline-none" aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
+        <% if user_signed_in? %>
+          <div class="px-4 py-3">         
+            <p class="text-sm leading-5">Signed in as</p>
+            <p class="text-sm font-medium leading-5 text-slate-900 truncate"><%= current_user.email %></p>
+          </div>
+          <div class="py-1">
+          <%= link_to "Profile", pages_profile_path, class: "text-slate-700 hover:bg-slate-100 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" %>
+          <%= link_to "Settings", pages_profile_path, class: "text-slate-700 hover:bg-slate-100 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" %>
+        </div>
+          <div class="py-1">
+          <%= link_to "Sign out", destroy_user_session_path, method: "delete", class: "text-slate-700 hover:bg-slate-100 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" %>
+        </div>
+      <% else %>
+          <div class="py-1">
+          <%= link_to "Log In", new_user_session_path, class: "text-slate-900 font-medium hover:bg-slate-100 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" %>
+          <%= link_to "Sign Up", new_user_registration_path, class: "text-slate-700 hover:bg-slate-100 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" %>
+    </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
+</div>

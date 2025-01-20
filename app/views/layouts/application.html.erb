@@ -25,11 +25,14 @@
       <%= render 'shared/ios_pwa_links' %>
   </head>
 
-  <body class="relative">
-    <div class="mx-4 mb-20 mt-4">
-      <%= yield %>
-      <%= turbo_frame_tag "modal", class: "fixed bottom-16" %>
+  <body class="relative ">
+    <%= render "shared/desktop_navbar" %>
+    <div class="mx-auto xl:container">
+      <div class="mx-4 mb-20 mt-4 xl:mx-0" >
+        <%= yield %>
+        <%= turbo_frame_tag "modal", class: "fixed bottom-16" %>
+      </div>
+      <%= render "shared/mobile_navbar" %>
     </div>
-    <%= render "shared/navbar" %>
   </body>
 </html>
