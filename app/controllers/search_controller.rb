@@ -4,9 +4,9 @@ class SearchController < ApplicationController
     category_id = params[:category].present? ? params[:category].to_i : nil
 
     @spots = if category_id
-      Spot.search(search_field, fields: %i[search category_id], where: { category_id: category_id})
+      Spot.search(search_field, fields: [:name, :description], operator: "or", where: { category_id: category_id})
     else
-      Spot.search(search_field, fields: %i[search])
+      Spot.search(search_field, fields: [:name, :description], operator: "or")
 
     end
 

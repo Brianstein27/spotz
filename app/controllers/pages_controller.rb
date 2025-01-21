@@ -6,6 +6,7 @@ class PagesController < ApplicationController
     @events = Event.all
     @experiences = Experience.all.sample(3)
 
+    @geoapify_hash = make_geoapify_request(ENV['GEOAPIFY_API_KEY'], '206.22.56.21') 
     @markers = @spots.geocoded.map do |spot|
       {
         latitude: spot.latitude,
@@ -23,5 +24,21 @@ class PagesController < ApplicationController
 
   def settings
 
+  end
+
+  private
+
+  def client_ip
+    request.remote_ip
+  end
+
+  def make_geoapify_request(api_key, ip_address)
+    uri = "https://api.geoapify.com/v1/ipinfo?ip=#{ip_address}&apiKey=#{api_key}"
+
+    response = HTTParty.get(uri)
+    parsed_response = JSON.parse(response.body)
+    return parsed_response["location"]
+    rescue StandardError => error
+    puts "Error (#{ error.message })"
   end
 end

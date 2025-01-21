@@ -4,15 +4,7 @@ class SpotsController < ApplicationController
 
   def index
     @spots = Spot.all
-
-    @markers = @spots.geocoded.map do |spot|
-      {
-        latitude: spot.latitude,
-        longitude: spot.longitude,
-        marker_html: render_to_string(partial: "marker"),
-        name: spot.name
-      }
-    end
+    @geoapify_hash = make_geoapify_request(ENV['GEOAPIFY_API_KEY'], '206.22.56.21') 
   end
 
   def show
@@ -74,7 +66,7 @@ class SpotsController < ApplicationController
   end
 
   def spot_params
-  params.require(:spot).permit(:search, :category_id)
+  params.require(:spot).permit(:search, :category)
   end
 
 end

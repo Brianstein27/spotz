@@ -10,7 +10,7 @@
       <%= form.submit :search, class: "rounded-lg bg-teal-400 border-[1px] border-solid border-teal-400 font-semibold text-white px-4 py-2 cursor-pointer" %>
     </div>
     <div>
-      <%= form.select :category_id, 
+      <%= form.select :category, 
         options_for_select(Category.all.map { |cat| [cat.name, cat.id] }.insert(0, ["Category", ""])), 
         {},
         { class: "cursor-pointer w-32 rounded-lg border-[1px] border-solid border-slate-400 px-4 py-2 hover:drop-shadow-md text-slate-600" } %>
