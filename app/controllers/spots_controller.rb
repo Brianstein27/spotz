@@ -3,11 +3,7 @@ class SpotsController < ApplicationController
   before_action :set_spot, only: %i[show]
 
   def index
-    if params[:query].present?
-        @spots = Spot.global_search(params[:query])
-    else
-      @spots = Spot.all
-    end
+    @spots = Spot.all
 
     @markers = @spots.geocoded.map do |spot|
       {
@@ -75,6 +71,10 @@ class SpotsController < ApplicationController
     return parsed_response["location"]
     rescue StandardError => error
     puts "Error (#{ error.message })"
+  end
+
+  def spot_params
+  params.require(:spot).permit(:search, :category_id)
   end
 
 end

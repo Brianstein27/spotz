@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
 
   root to: "pages#home"
+
+  post "search_spots", to: "search#search_spots"
+  post "search_experiences", to: "search#search_experiences"
+  post "search_bookmarks", to: "search#search_bookmarks"
+
   get "pages/profile", to: "pages#profile"
 
   get "pages/settings", to: "pages#settings"

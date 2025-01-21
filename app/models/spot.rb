@@ -1,4 +1,6 @@
 class Spot < ApplicationRecord
+  searchkick
+
   has_many :reviews, as: :reviewable
   has_many :experiences, through: :links
   has_many :bookmarks

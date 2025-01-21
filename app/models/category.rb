@@ -1,5 +1,7 @@
 class Category < ApplicationRecord
-  has_many :spots
+  searchkick
+
+  has_many :spots, dependent: :destroy
 
   validates :name, presence: true
 
