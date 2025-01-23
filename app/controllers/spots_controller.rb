@@ -4,7 +4,7 @@ class SpotsController < ApplicationController
 
   def index
     @spots = Spot.all
-    @geoapify_hash = make_geoapify_request(ENV['GEOAPIFY_API_KEY'], '206.22.56.21') 
+    @geoapify_hash = make_geoapify_request(ENV['GEOAPIFY_API_KEY'], '87.184.167.191') 
   end
 
   def show
@@ -23,7 +23,7 @@ class SpotsController < ApplicationController
     @experiences = links.map(&:experience)
     @average_rating = average_rating
 
-    @geoapify_hash = make_geoapify_request(ENV['GEOAPIFY_API_KEY'], '206.22.56.21') 
+    @geoapify_hash = make_geoapify_request(ENV['GEOAPIFY_API_KEY'], '87.184.167.191') 
     @distance = @spot.distance_to([@geoapify_hash["latitude"], @geoapify_hash["longitude"]])
     @short_distance = @distance.round(2)
   end
@@ -66,7 +66,7 @@ class SpotsController < ApplicationController
   end
 
   def spot_params
-  params.require(:spot).permit(:search, :category)
+  params.require(:spot).permit(:search, :category, :distance)
   end
 
 end

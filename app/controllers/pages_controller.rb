@@ -6,7 +6,7 @@ class PagesController < ApplicationController
     @events = Event.all
     @experiences = Experience.all.sample(3)
 
-    @geoapify_hash = make_geoapify_request(ENV['GEOAPIFY_API_KEY'], '206.22.56.21') 
+    @geoapify_hash = make_geoapify_request(ENV['GEOAPIFY_API_KEY'], '87.184.167.191') 
     @markers = @spots.geocoded.map do |spot|
       {
         latitude: spot.latitude,
