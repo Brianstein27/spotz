@@ -2,18 +2,11 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
 
   def home
-    @spots = Spot.all
+    @spots = Spot.all.sample(10)
     @events = Event.all
     @experiences = Experience.all.sample(3)
 
     @geoapify_hash = make_geoapify_request(ENV['GEOAPIFY_API_KEY'], '87.184.167.191') 
-    @markers = @spots.geocoded.map do |spot|
-      {
-        latitude: spot.latitude,
-        longitude: spot.longitude,
-        marker_html: render_to_string(partial: "spots/marker")
-      }
-    end
   end
 
   def profile
