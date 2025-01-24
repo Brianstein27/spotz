@@ -82,6 +82,7 @@ gem "open-uri"
 gem "nokogiri"
 gem "csv"
 gem 'httparty'
+gem 'faker'
 
 gem "searchkick", "~> 5.4"
 gem "elasticsearch", "~> 8.17"

@@ -13,17 +13,17 @@
       <%= form.select :category, 
         options_for_select(Category.all.map { |cat| [cat.name, cat.id] }.insert(0, ["Category", ""])), 
         {},
-        { class: "cursor-pointer w-32 rounded-lg border-[1px] border-solid border-slate-400 px-4 py-2 hover:drop-shadow-md text-slate-600" } %>
+        { class: "cursor-pointer w-40 rounded-lg border-[1px] border-solid border-slate-400 px-4 py-2 hover:drop-shadow-md text-slate-600" } %>
 
       <%= form.select :distance, 
         [["< 1km", 1], ["< 5km", 5], ["< 15km", 15], ["< 25km", 25], ["< 50km", 50]].insert(0, ["Distance", ""]), 
         {}, 
-        { class: "w-32 cursor-pointer  rounded-lg border-[1px] border-solid border-slate-400 px-4 py-2 hover:drop-shadow-md text-slate-600" } %>
+        { class: "w-40 cursor-pointer  rounded-lg border-[1px] border-solid border-slate-400 px-4 py-2 hover:drop-shadow-md text-slate-600" } %>
 
       <%= form.select :rating, 
         ["> 1 star", "> 2 stars", "> 3 stars", "> 4 stars", "5 stars"].insert(0, ["Rating", ""]), 
         {}, 
-        { class: "w-32 rounded-lg border-[1px] border-solid border-slate-400 cursor-pointer px-4 py-2 hover:drop-shadow-md text-slate-600" } %>
+        { class: "w-40 rounded-lg border-[1px] border-solid border-slate-400 cursor-pointer px-4 py-2 hover:drop-shadow-md text-slate-600" } %>
     </div>
   <% end %>
   <div id="spots">
